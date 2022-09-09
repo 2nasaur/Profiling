@@ -1,0 +1,115 @@
+mat-card-title{
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .login-wrapper .example-full-width,
+  .login-wrapper {
+    width: 100%;
+  }
+  
+  
+  
+  .login-wrapper{
+    display: flex;
+    justify-content:center;
+  
+    height: 400px;
+  }
+  .box {
+    position: relative;
+    top: 0px;
+    opacity: .9;
+    float: left;
+    padding: 50px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    transform: scale(1);
+    /* -webkit-transform: scale(1);
+    -ms-transform: scale(1); */
+    /* z-index: 0; */
+    max-width: 290px;
+    height: 370px;
+  
+  }
+  
+  .login-wrapper mat-card-header {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+  }
+  
+  .login-wrapper .mat-stroked-button {
+    border: 1px solid currentColor;
+    line-height: 54px;
+    background: #FFF7FA;
+  }
+  body{
+    background-image: url('/assets/bg.jfif');
+    background-repeat: no-repeat;
+    
+    background-position: center;
+    background-size: cover;
+  
+  }
+  
+  
+  
+  h1{
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #logo{
+  height:100px;
+  width:100px;
+  display: flex;
+  padding: 5px;
+  }
+  #logos{
+  
+      height:100px;
+      width:100px;
+      display: flex;
+  
+      margin-left: 100px;
+  }
+  
+  .center{
+    margin-left: 40px;
+  
+  }
+  #logo-name-container{
+  display: flex;
+  align-items: center;
+  }
+  .login-wrapper .mat-stroked-button {
+    border: 1px solid currentColor;
+    background: #000000;
+  }
+  .btn-block{
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  }
+  #loginbtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  mat-card-header{
+    padding-bottom: 3px;
+  }
+  mat-form-field{
+    padding-bottom: 3px;
+  }
+  .fgtpass{
+    text-align: center;
+    font-size: 15px;
+    color: blue;
+    
+  }
+  .pwhide{
+    width: 10px;
+  }

@@ -1,0 +1,63 @@
+<body>
+    <div id="logo-name-container" >
+      <div id="logo">
+        <!-- <img src="assets/dostlogo.png"> -->
+      </div>
+        <!-- <h1>DOST</h1> -->  
+        </div>
+      <div class="login-wrapper">
+        <mat-card class="box mat-elevation-z8">
+            
+      <div id="logos">
+          <img src="assets/letran.png">
+      </div>
+          <br>
+     <mat-card-header> 
+          <mat-card-title> <b>Letran-Calamba</b></mat-card-title>
+      </mat-card-header>    
+              
+      
+              <!-- <form (ngSubmit)="login(loginForm.value)" #loginForm='ngForm'> -->
+                  <mat-form-field class="center">
+                      <input
+                          matInput
+                          name='username'
+                          type="text"
+                          class="input_fields"
+                          [(ngModel)]="username"
+                          required
+                          placeholder="Email">
+                  <mat-icon matSuffix>supervised_user_circle</mat-icon>
+                  </mat-form-field>
+    
+              <br>
+    
+                  <mat-form-field class="center">
+                      <input
+                          matInput
+                          class="input_fields"
+                          type="password"
+                          [type]="hide ?'password':'text'"
+                          name='password'
+                          [(ngModel)]="password"
+                          required
+                          placeholder="Password">
+                          <mat-icon class="pwhide" matSuffix (click)="hide=!hide">
+                            {{hide?'visibility_off':'visibility'}}
+                            </mat-icon>
+                  <!-- <mat-icon  matSuffix>lock</mat-icon> -->
+                  </mat-form-field>
+                 
+                  <div id="loginbtn"><button mat-stroked-button class="btn-block" (click)="login()">SUBMIT</button></div>
+                  
+                  <div class="fgtpass">
+                    <p><a ><u> Forgot Password? </u></a></p>
+                  </div>
+              <!-- </form> -->
+          </mat-card>
+      </div>
+    
+    
+    </body>
+    <!-- <div id='snackbar'>Password changed</div> -->
+    
