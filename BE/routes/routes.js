@@ -8,5 +8,5 @@ router.get('/welcome',(req, res)=>{
 
 router.get('/test',test.testing)
 router.post('/test',test.postTesting)
-
+router.patch('/test',test.updateTesting)
 module.exports = router;
