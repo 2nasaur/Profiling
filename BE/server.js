@@ -6,6 +6,9 @@ const routes = require('./routes/routes')
 const bodyParser = require("body-parser");
 const cors = require('cors')
 const sequelize = require('./database/database.connect')
+const primary = require('./models/primary.model');
+const secondary = require('./models/secondary.model');
+
 
 var corsOptions = {
 };
@@ -34,8 +37,9 @@ app.use((req,res)=>{
     res.redirect('/notFound')
 });
 
+secondary.belongsTo(primary)
 sequelize
-    .sync()
+    .sync({force:false})
     .then(result=>{
         app.listen(port,()=>{
             //console.log(result)
