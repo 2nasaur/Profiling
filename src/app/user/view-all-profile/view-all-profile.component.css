@@ -1,0 +1,112 @@
+
+
+mat-spinner{
+    position:fixed;
+    left:45%;
+    top:45%;
+}
+
+.upPage {
+    justify-content: space-between;
+}
+/* @media screen and (max-width: 360px) {
+    th {
+      display: flex;
+      position: fixed;
+      z-index: 999;
+      width: 73vw;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      left: -100vw;
+      float: none;
+      transition: .25s ease-in-out;
+    } */
+
+
+
+table{
+    /* margin:0 10%; */
+    width:100%;
+}
+
+th{
+    background-color: black;
+    color:white;
+    width: 100px;
+}
+
+mat-card{
+    padding:2%;
+     width:80%;
+     margin-top:2%;
+   /* margin:0 10%; */
+     overflow: auto;
+}
+
+div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+div#controls{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;    
+}
+
+.btnProfile{
+  float:right;
+  width: auto;
+  background-color:black;
+  color: white;
+}
+
+button#add{
+     right:50px;
+}
+
+.inactive{
+    background-color:lightgray;
+}
+
+.enabled{
+    color: green;
+    background-color: lightgreen;
+    font-size: small;
+  }
+  
+.disabled{
+    color: maroon;
+    background-color: lightcoral;
+    font-size: small;
+  }
+  tr:hover{
+    background-color:antiquewhite;
+    cursor : pointer;
+  }
+
+  form{
+    display: flex;
+    justify-content: flex-end;
+  }
+  ::ng-deep .search{
+      display: inline-block !important;
+      justify-content: right;
+      width: 100%;
+  }
+
+  mat-form-field{
+    padding: 15px;
+  }
+
+  .highlight{
+    background:lightgrey;
+  }
+
+  .highlight2{
+    background:lightgreen;
+  }
+  

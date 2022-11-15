@@ -1,0 +1,32 @@
+<div id="grid">
+    <div id="header">
+        <app-header (menuClickedEvent)="toggleSideNav()"></app-header>
+    </div>
+    <div id="body">
+        <mat-drawer-container>
+            <mat-drawer mode="side" [opened]="sideNavVisible">
+                <app-sidenav></app-sidenav>
+            </mat-drawer>
+            <mat-drawer-content>      
+                <!-- <div id="breadcrumb-container">
+                    <app-breadcrumb></app-breadcrumb>
+                </div> -->
+                <div id="container">
+                    <div id="main-content">
+                        <router-outlet></router-outlet>
+                    </div>
+                    <!-- <div id="side-cards">
+                        <app-to-do-list></app-to-do-list>
+                        <app-announcements></app-announcements>
+                    </div> -->
+                </div>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+    <div id="footer">
+        <app-footer></app-footer>
+    </div>
+</div>
+
+
+

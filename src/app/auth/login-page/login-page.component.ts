@@ -30,8 +30,8 @@ export class LoginPageComponent implements OnInit {
   login(){
     console.log(this.username, this.password)
     if(this.username === 'username' && this.password === 'password' ){
-      localStorage.setItem('token',"DOST")
-    this.router.navigate(['developers/dashboard']);
+      localStorage.setItem('token',"CSJL")
+    this.router.navigate(['user/dashboard']);
       alert('Login Successfully ');
       
     } 

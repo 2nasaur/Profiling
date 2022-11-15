@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule,
-    AuthModule
+    AuthModule,
+    UserModule
     
    
     

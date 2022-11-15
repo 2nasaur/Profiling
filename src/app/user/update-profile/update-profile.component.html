@@ -1,0 +1,123 @@
+<!-- <mat-spinner *ngIf='(data == undefined); else elseBlock'></mat-spinner> -->
+<mat-spinner *ngIf='(false); else elseBlock'></mat-spinner>
+
+<ng-template #elseBlock>
+   <div>
+           <h2>Owner Details</h2>
+           <br>
+           <!-- <form #addProfileForm='ngForm' (ngSubmit)='submit(addProfileForm.value)'> -->
+            <mat-list>
+                <mat-list-item><div fxFlex='40' class='label'>First Name: </div><div fxFlex="60%" class='div-values'>
+                    <mat-form-field>
+                        <input matInput name='firstName' [(ngModel)]='firstName' required pattern="^[a-zA-Z ]+$">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div></mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list-item><div fxFlex='40' class='label'>Last Name:</div> <div fxFlex="60%" class='div-values'>
+                        <mat-form-field>
+                            <input matInput name='lastName' [(ngModel)]='lastName' required pattern="^[#.0-9a-zA-Z ,-]+$">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                </div></mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list-item><div fxFlex='40' class='label'>Address: </div><div fxFlex="60%" class='div-values'>
+                        <mat-form-field>
+                            <input matInput name='address' [(ngModel)]='address' required pattern="^[#.0-9a-zA-Z ,-]+$">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                </div></mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list-item><div fxFlex='40' class='label'>Contact Number: </div><div fxFlex="60%" class='div-values'>
+                    <mat-form-field>
+                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+            </div></mat-list-item>
+            <!-- <mat-divider></mat-divider> -->
+
+
+            <mat-list-item><div fxFlex='40' class='label'>Sex:</div> <div fxFlex="60%" class='div-values'>
+
+                <mat-form-field >
+                    <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                    <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex">
+                      <mat-option value="male">Male</mat-option>
+                      <mat-option value="female">Female</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div></mat-list-item>
+
+
+                <mat-list-item><div fxFlex='40' class='label'>Civil Status: </div><div fxFlex="60%" class='div-values'>
+                        <mat-form-field>
+                            <input matInput name='civilStatus' [(ngModel)]='civilStatus' required>
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                </div></mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+
+                <mat-list-item><div fxFlex='40' class='label'>Source of Income: </div><div fxFlex="60%" class='div-values'>
+                    <mat-form-field>
+                        <input matInput name='soi' [(ngModel)]='soi' required>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+            </div></mat-list-item>
+            <!-- <mat-divider></mat-divider> -->
+
+
+            <mat-list-item><div fxFlex='40' class='label'>Type of Household:</div> <div fxFlex="60%" class='div-values'>
+
+                <mat-form-field >
+                    <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                    <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold">
+                      <mat-option>None</mat-option>
+                      <mat-option value="dueling">Dueling</mat-option>
+                      <mat-option value="concrete">Concrete</mat-option>
+                      <mat-option value="barong">Barong barong</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div></mat-list-item>
+
+
+            <mat-list-item><div fxFlex='40' class='label'>Educational Attainment: </div><div fxFlex="60%" class='div-values'>
+                <mat-form-field>
+                    <input matInput name='ea' [(ngModel)]='ea' required>
+                    <mat-error></mat-error>
+                </mat-form-field>
+        </div></mat-list-item>
+        <!-- <mat-divider></mat-divider> -->
+
+        <mat-list-item  *ngIf="sex === 'female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
+
+            <mat-form-field >
+                <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy">
+                  <mat-option value="yes">Yes</mat-option>
+                  <mat-option value="no">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div></mat-list-item>
+
+            <mat-list-item><div fxFlex='40' class='label'>Medical History: </div><div fxFlex="60%" class='div-values'>
+                <mat-form-field>
+                    <input matInput name='mh' [(ngModel)]='mh' required>
+                    <mat-error></mat-error>
+                </mat-form-field>
+        </div></mat-list-item>
+        <!-- <mat-divider></mat-divider> -->
+
+                <br>
+                <br>
+
+        <div id='controls'>
+            <!-- <button mat-raised-button type='button' (click)="addfamily()"><mat-icon>add_circle_outline</mat-icon> Add Family Member </button>  -->
+            <button mat-raised-button color='primary' type='submit'><mat-icon>send</mat-icon> Update Profile </button> 
+            <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>
+        </div>
+            </mat-list>
+        <!-- </form> -->
+
+   </div><br>
+
+</ng-template>

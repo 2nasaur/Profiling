@@ -1,0 +1,54 @@
+
+#content{
+    background-color: white;
+    height:100%;
+    width: auto;
+    overflow: hidden;
+}
+
+#logo-container{
+    margin-top:50px;
+    height:200px;
+    width:245px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo-container img{
+    transform:scale(0.3);
+    
+}
+
+/* mat-list {
+    padding-left: 15px;
+} */
+
+mat-list mat-list-item{
+    color:rgb(0, 0, 0);
+}
+
+mat-list mat-list-item.child_option:hover{
+    padding-left:16px;
+    padding-right:0px;
+    cursor: pointer;
+    background-color: gainsboro;
+}
+
+mat-icon {
+    margin-right : 16px;
+}
+.toggle{
+    width: 230px;
+    background-color: #E7E8E6;
+    box-shadow: none;
+    margin-left: none;
+    
+    
+    
+}
+
+
+
+
+

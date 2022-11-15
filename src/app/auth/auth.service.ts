@@ -13,6 +13,8 @@ export class AuthService {
 
   // authURL= environment.apiURL+ 'user/auth';
 
+  jwttoken:string = '';
+
   constructor(private http : HttpClient) { }
 
 

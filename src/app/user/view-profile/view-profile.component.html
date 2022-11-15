@@ -1,0 +1,75 @@
+<!-- <mat-spinner *ngIf='(data == undefined); else elseBlock'></mat-spinner> -->
+<mat-spinner *ngIf='(false); else elseBlock'></mat-spinner>
+
+<ng-template #elseBlock>
+   <div>
+       <mat-card class='mat-elevation-z8'>
+           <h2>Owner Details</h2>
+
+           <div id= 'controls'>
+            <!-- <button mat-fab color='basic' mat-tooltip='Generate Report' (click)='exportToCSV()'><mat-icon>ios_share</mat-icon></button>
+            <button mat-fab color='primary' mat-tooltip='Edit Agency' (click)='updateAgency()'><mat-icon>edit</mat-icon></button>
+            <button mat-fab color='warn' mat-tooltip='Disable Agency' (click)='disableAgency()'><mat-icon>highlight_off</mat-icon></button> -->
+            </div>
+            <br>
+
+            <mat-list>
+                <mat-list-item><div fxFlex='40' class='label'>First Name: </div><div fxFlex="60%" class='div-values'>{{firstName}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Last Name:</div> <div fxFlex="60%" class='div-values'>{{lastName}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Address: </div><div fxFlex="60%" class='div-values'>{{address}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Contact Number: </div><div fxFlex="60%" class='div-values'>{{contact}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Sex: </div><div fxFlex="60%" class='div-values'>{{sex}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Civil Status:</div> <div fxFlex="60%" class='div-values'>{{civilStatus}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><div fxFlex='40' class='label'>Source of Income:</div> <div fxFlex="60%" class='div-values'>{{soi}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item><div fxFlex='40' class='label'>Type of Household:</div> <div fxFlex="60%" class='div-values'>
+
+                    <mat-form-field >
+                        <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                        <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold">
+                          <mat-option>None</mat-option>
+                          <mat-option value="dueling">Dueling</mat-option>
+                          <mat-option value="concrete">Concrete</mat-option>
+                          <mat-option value="barong">Barong barong</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div></mat-list-item>
+                    <mat-divider></mat-divider>
+
+                <mat-list-item><div fxFlex='40' class='label'>Education Attainment:</div> <div fxFlex="60%" class='div-values'>{{ea}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item  *ngIf="sex === 'female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
+
+                    <mat-form-field >
+                        <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                        <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy">
+                          <mat-option value="yes">Yes</mat-option>
+                          <mat-option value="no">No</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div></mat-list-item>
+
+                <mat-list-item><div fxFlex='40' class='label'>Medical History:</div> <div fxFlex="60%" class='div-values'>{{mh}}</div></mat-list-item>
+                <mat-divider></mat-divider>
+                <br>
+                <br>
+                <div id='controls'>
+                  <button mat-raised-button type='button' (click)="addfamily()"><mat-icon>person_add</mat-icon> Add Family Member </button> 
+                  <button mat-raised-button color='primary' (click)="update()"><mat-icon>edit</mat-icon> Update Profile </button> 
+                  <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>
+              </div>
+            </mat-list>
+
+
+       </mat-card>
+   </div><br>
+
+</ng-template>
