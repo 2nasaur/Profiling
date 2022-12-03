@@ -16,6 +16,7 @@ router.patch('/test',test.updateTesting)
 router.get('/allPrimary',primary.primaryGetAll)
 router.post('/primary',primary.primaryPost)
 router.patch('/primary',primary.updatePrimary)
+router.get('/primary', primary.primaryGetById)
 
 router.get('/allSecondary',secondary.primaryGetAll)
 router.post('/secondary',secondary.primaryPost)

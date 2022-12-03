@@ -47,6 +47,10 @@ const primary = sequelize.define('mainProfile',{
     mh:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    status:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });

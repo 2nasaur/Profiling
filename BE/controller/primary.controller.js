@@ -5,17 +5,40 @@ exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
     const size = req.query.size
     const pageNo = (page-1)
+    const size1 = parseInt(size)
+    console.log(typeof size1)
     model.findAll({
-        limit: size,
+        limit: size1,
         offset: pageNo 
     })
     .then(results =>{
         res.json(results)
     })
+    .catch(err=>{
+        console.log(err)
+    })
     
 };
 
+exports.primaryGetById = (req,res)=>{
+    const id = req.query.id
+    model.findOne({
+        where:{
+            id:id
+        }
+    })
+    .then(results=>{
+        res.json(results)
+    }).catch(err=>{
+        console.log(err)
+    })
+}
+
 exports.primaryPost = (req,res)=>{
+
+    
+
+
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const address = req.body.address;
@@ -27,6 +50,14 @@ exports.primaryPost = (req,res)=>{
     const ea = req.body.ea;
     const mh = req.body.mh;
 
+    let status
+    if(soi <= 5000){
+        status = "Qualified"
+    }else{
+        status = "Not Qualified"
+    }
+    
+
     model.create({
         firstName:firstName,
         lastName:lastName,
@@ -37,7 +68,8 @@ exports.primaryPost = (req,res)=>{
         soi:soi,
         typeofhousehold:typeofhousehold,
         ea:ea,
-        mh:mh
+        mh:mh,
+        status:status
     })
     .then(result =>{
         res.json(onCreate)

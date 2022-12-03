@@ -16,10 +16,6 @@ const secondary = sequelize.define('subProfile',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    address:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
     contact:{
         type: Sequelize.INTEGER ,
         allowNull: true
@@ -33,10 +29,6 @@ const secondary = sequelize.define('subProfile',{
         allowNull: false
     },
     soi:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    typeofhousehold:{
         type: Sequelize.STRING,
         allowNull: true
     },
