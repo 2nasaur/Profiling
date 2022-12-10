@@ -33,3 +33,7 @@ div#controls button{
 button#add{
      right:50px;
 }
+
+.mat-list-item{
+  margin: 20px;
+}

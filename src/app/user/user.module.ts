@@ -27,6 +27,8 @@ import { AuthModule } from '../auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NgChartsModule } from 'ng2-charts';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -46,6 +48,7 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { CreateFamilyProfileComponent } from './create-family-profile/create-family-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -98,7 +101,10 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     AuthModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
     
     

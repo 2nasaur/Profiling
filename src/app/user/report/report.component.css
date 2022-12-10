@@ -1,0 +1,54 @@
+mat-card{
+    padding:2%;
+     width:80%;
+     margin-top:2%;
+   /* margin:0 10%; */
+     overflow: auto;
+     /* display: flex; */
+     height: auto;
+     border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.head-head{
+    display: block;
+    height: auto;
+}
+
+.mat-card2{
+    display: block;
+}
+
+.head-body{
+    display: flex;
+    justify-content: space-between;
+}
+
+table{
+    /* margin:0 10%; */
+    width:100%;
+    margin-top: 2%;
+}
+
+th{
+    background-color: black;
+    color:white;
+    width: 100px;
+}
+
+.dateFormField {
+    width: 50%;
+    margin-right: 5%;
+}
+
+.control {
+    height: 50px;
+    /* margin-top: 6%; */
+    margin-right: 3%;
+}
+
+.mat-list-base{
+    display: flex;
+    margin-right: 5%;
+}

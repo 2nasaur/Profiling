@@ -57,7 +57,7 @@ export class ViewProfileComponent implements OnInit {
 
   addfamily(){
     let dialogRef = this.dialog.open(CreateFamilyProfileComponent, {
-      width: '40%',
+      width: '60%',
       minWidth: '320px',
       // data: { 
       //   // first_name: this.singleData.first_name, 

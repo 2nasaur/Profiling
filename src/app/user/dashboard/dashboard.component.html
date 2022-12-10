@@ -1,4 +1,73 @@
-<p>dashboard works!</p>
+<div class="row">
+    <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Total Family</mat-card-title>
+          <mat-card-subtitle><mat-icon>people</mat-icon>100</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <hr>
+          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
 
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Number of 4'ps Qualified</mat-card-title>
+          <mat-card-subtitle><mat-icon>verified_user</mat-icon>62</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <hr>
+          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
 
-<!-- <button mat-raised-button type='button' (click)="go()">Create</button> -->
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Malnutrision Cases</mat-card-title>
+          <mat-card-subtitle><mat-icon>sentiment_very_dissatisfied</mat-icon>38</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <hr>
+          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Number of Pregnants</mat-card-title>
+          <mat-card-subtitle><mat-icon>pregnant_woman</mat-icon>100</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <hr>
+          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
+
+<div>
+  <mat-card class="lineChart">
+    <canvas baseChart width="200" height="50" type="line" [data]="lineChartData"></canvas>
+  </mat-card>
+</div>
+
+<div class="row2">
+  <mat-card class="barChart">
+  <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+  <canvas baseChart width="200" height="100" type="bar" [data]="barChartData"></canvas>
+  </mat-card>
+
+  <mat-card class="barChart">
+    <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+    <canvas baseChart width="200" height="100" type="bar" [data]="barChartData2"></canvas>
+    </mat-card>
+
+    <mat-card class="barChart">
+      <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+      <canvas baseChart width="200" height="100" type="bar" [data]="barChartData3"></canvas>
+      </mat-card>
+
+      <mat-card class="barChart">
+        <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+        <canvas baseChart width="200" height="100" type="bar" [data]="barChartData4"></canvas>
+        </mat-card>
+</div>

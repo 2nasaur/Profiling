@@ -6,11 +6,7 @@ mat-spinner{
     top:45%;
 }
 
-agm-map {
-    height: 300px;
-  }
-
-.asd {
+/* .asd {
     display: flex;
     justify-content: flex-start;
 }
@@ -18,7 +14,7 @@ agm-map {
 .asd2 {
     padding: 15px;
     margin-left: 10%;
-}
+} */
 
 table{
     /* margin:0 10%; */
@@ -35,6 +31,13 @@ mat-card{
      width:80%;
      margin-top:2%;
    /* margin:0 10%; */
+     overflow: auto;
+     /* display: flex; */
+     height: auto;
+     border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
 }
 
 div{
@@ -43,10 +46,14 @@ div{
     justify-content: center;
 }
 
+.mat-list-item{
+    margin: 20px;
+  }
+
 div#controls{
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;    
+    justify-content: flex-end;
 }
 
 div#controls button{
@@ -62,14 +69,113 @@ button#add{
 }
 
 .div-values{
- 
-    text-align: left;    
+
+    text-align: left;
 }
 div.label{
     justify-content: left;
     text-align: left;
     width:250px;
+    margin: 2px;
+    /* font-weight: bold; */
 }
+
+.input-fields{
+    /* display: block; */
+    width: 100%;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+mat-form-field{
+    width: 200%;
+}
+
+.mat-form-field-flex{
+    width: 200%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    /* border-radius: 4px;
+    padding: 0.75em 0.75em 0 0.75em; */
+    /* border: 1px solid #f94747; */
+    /* width: auto; */
+    /* margin-bottom:50px; */
+    /* padding: 5px; */
+  }
+
+  .body{
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    /* margin: 5px; */
+  }
+
+  .body2{
+    display: flex;
+    /* justify-content: space-between; */
+    /* padding: 33%; */
+    width: 103%;
+  }
+
+  .label-body{
+    /* justify-content: left;
+    text-align: left;
+    width:250px;
+    margin: 2px; */
+    margin-right: 140%;
+    flex-wrap: wrap;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  .label-body2{
+    /* justify-content: left;
+    text-align: left;
+    width:250px;
+    margin: 2px; */
+    margin-left: 25%;
+    flex-wrap: wrap;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .label-body3{
+    /* justify-content: left;
+    text-align: left;
+    width:250px;
+    margin: 2px; */
+    margin-left:90%;
+  }
+
+  .label-body4{
+    /* justify-content: left;
+    text-align: left;
+    width:250px;
+    margin: 2px; */
+    margin-left: 0%;
+    flex-wrap: wrap;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .label-body5{
+    /* justify-content: left;
+    text-align: left;
+    width:250px;
+    margin: 2px; */
+    margin-left: 120%;
+    flex-wrap: wrap;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+
+  .body3{
+    display: flex;
+    justify-content: space-between;
+  }
+
 
 
 

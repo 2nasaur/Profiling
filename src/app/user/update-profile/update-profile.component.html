@@ -8,28 +8,28 @@
            <!-- <form #addProfileForm='ngForm' (ngSubmit)='submit(addProfileForm.value)'> -->
             <mat-list>
                 <mat-list-item><div fxFlex='40' class='label'>First Name: </div><div fxFlex="60%" class='div-values'>
-                    <mat-form-field>
+                    <mat-form-field class='input-fields' appearance='outline'>
                         <input matInput name='firstName' [(ngModel)]='firstName' required pattern="^[a-zA-Z ]+$">
                         <mat-error></mat-error>
                     </mat-form-field>
                 </div></mat-list-item>
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list-item><div fxFlex='40' class='label'>Last Name:</div> <div fxFlex="60%" class='div-values'>
-                        <mat-form-field>
+                        <mat-form-field class='input-fields' appearance='outline'>
                             <input matInput name='lastName' [(ngModel)]='lastName' required pattern="^[#.0-9a-zA-Z ,-]+$">
                             <mat-error></mat-error>
                         </mat-form-field>
                 </div></mat-list-item>
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list-item><div fxFlex='40' class='label'>Address: </div><div fxFlex="60%" class='div-values'>
-                        <mat-form-field>
+                        <mat-form-field class='input-fields' appearance='outline'>
                             <input matInput name='address' [(ngModel)]='address' required pattern="^[#.0-9a-zA-Z ,-]+$">
                             <mat-error></mat-error>
                         </mat-form-field>
                 </div></mat-list-item>
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list-item><div fxFlex='40' class='label'>Contact Number: </div><div fxFlex="60%" class='div-values'>
-                    <mat-form-field>
+                    <mat-form-field class='input-fields' appearance='outline'>
                         <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$">
                         <mat-error></mat-error>
                     </mat-form-field>
@@ -39,7 +39,7 @@
 
             <mat-list-item><div fxFlex='40' class='label'>Sex:</div> <div fxFlex="60%" class='div-values'>
 
-                <mat-form-field >
+                <mat-form-field class='input-fields' appearance='outline'>
                     <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
                     <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex">
                       <mat-option value="male">Male</mat-option>
@@ -50,7 +50,7 @@
 
 
                 <mat-list-item><div fxFlex='40' class='label'>Civil Status: </div><div fxFlex="60%" class='div-values'>
-                        <mat-form-field>
+                        <mat-form-field class='input-fields' appearance='outline'>
                             <input matInput name='civilStatus' [(ngModel)]='civilStatus' required>
                             <mat-error></mat-error>
                         </mat-form-field>
@@ -58,7 +58,7 @@
                 <!-- <mat-divider></mat-divider> -->
 
                 <mat-list-item><div fxFlex='40' class='label'>Source of Income: </div><div fxFlex="60%" class='div-values'>
-                    <mat-form-field>
+                    <mat-form-field class='input-fields' appearance='outline'>
                         <input matInput name='soi' [(ngModel)]='soi' required>
                         <mat-error></mat-error>
                     </mat-form-field>
@@ -68,7 +68,7 @@
 
             <mat-list-item><div fxFlex='40' class='label'>Type of Household:</div> <div fxFlex="60%" class='div-values'>
 
-                <mat-form-field >
+                <mat-form-field class='input-fields' appearance='outline'>
                     <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
                     <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold">
                       <mat-option>None</mat-option>
@@ -81,7 +81,7 @@
 
 
             <mat-list-item><div fxFlex='40' class='label'>Educational Attainment: </div><div fxFlex="60%" class='div-values'>
-                <mat-form-field>
+                <mat-form-field class='input-fields' appearance='outline'>
                     <input matInput name='ea' [(ngModel)]='ea' required>
                     <mat-error></mat-error>
                 </mat-form-field>
@@ -90,7 +90,7 @@
 
         <mat-list-item  *ngIf="sex === 'female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
 
-            <mat-form-field >
+            <mat-form-field class='input-fields' appearance='outline'>
                 <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
                 <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy">
                   <mat-option value="yes">Yes</mat-option>
@@ -100,7 +100,7 @@
             </div></mat-list-item>
 
             <mat-list-item><div fxFlex='40' class='label'>Medical History: </div><div fxFlex="60%" class='div-values'>
-                <mat-form-field>
+                <mat-form-field class='input-fields' appearance='outline'>
                     <input matInput name='mh' [(ngModel)]='mh' required>
                     <mat-error></mat-error>
                 </mat-form-field>
