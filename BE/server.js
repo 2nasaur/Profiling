@@ -37,9 +37,10 @@ app.use((req,res)=>{
     res.redirect('/notFound')
 });
 
-secondary.belongsTo(primary)
+secondary.belongsTo(primary,{constrains: true,onDelete:'CASCADE'})
+primary.hasMany(secondary)
 sequelize
-    .sync({force:false})
+    .sync({force:true})
     .then(result=>{
         app.listen(port,()=>{
             //console.log(result)
