@@ -2,6 +2,7 @@ const model = require('../models/secondary.model')
 const onCreate = {message:"Family member has been added"}
 
 
+
 exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
     const size = req.query.size
@@ -20,7 +21,7 @@ exports.primaryPost = (req,res)=>{
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const contact = req.body.contact;
-    const sex = req.body.sex;
+    const sex1 = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const ea = req.body.ea;
@@ -28,6 +29,14 @@ exports.primaryPost = (req,res)=>{
     const relationshipTo = req.body.relationshipTo;
     const typeOfRelationship = req.body.rwto;
     const relationshipID = req.body.relationshipID;
+
+    let sex
+    if(sex1 == true){
+        sex = "Male"
+    }else{
+        sex = "Female"
+    }
+
 
     model.create({
         firstName:firstName,
@@ -53,7 +62,7 @@ exports.updatePrimary = (req,res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const contact = req.body.contact;
-    const sex = req.body.sex;
+    const sex1 = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const ea = req.body.ea;
@@ -61,6 +70,14 @@ exports.updatePrimary = (req,res) => {
     const relationshipTo = req.body.relationshipTo;
     const typeOfRelationship = req.body.typeOfRelationship;
     const id = req.query.id;
+
+    let sex
+    if(sex1 == true){
+        sex = "Male"
+    }else{
+        sex = "Female"
+    }
+
     model.update({
         firstName:firstName,
         lastName:lastName,

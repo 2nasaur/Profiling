@@ -40,10 +40,6 @@ const secondary = sequelize.define('subProfile',{
         type: Sequelize.STRING,
         allowNull: true
     },
-    relationshipTo:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
     typeOfRelationship:{
         type: Sequelize.STRING,
         allowNull: true

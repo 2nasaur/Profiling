@@ -51,6 +51,10 @@ const primary = sequelize.define('mainProfile',{
     status:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    malnutrision:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });

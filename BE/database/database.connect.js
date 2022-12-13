@@ -4,7 +4,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('barangay_profiling', 'root', '', {
   dialect: 'mysql',
-  host: 'localhost'
+  host: 'localhost',
+  timezone: '+08:00'
   //logging: false
  
 });
