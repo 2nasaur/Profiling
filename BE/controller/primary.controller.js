@@ -73,7 +73,10 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 [Op.or]:[{sex:sex},{firstName:firstName},{lastName:lastName}],
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
+
                 
             } 
         })
@@ -92,7 +95,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 sex:sex1,
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -109,7 +114,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 firstName:firstName1,
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -126,7 +133,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 lastName:lastName1,
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -143,7 +152,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 [Op.and]:[{sex:sex1},{firstName:firstName1}],
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -160,7 +171,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 [Op.and]:[{sex:sex1},{lastName:lastName1}],
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -177,7 +190,9 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 [Op.and]:[{firstName:firstName1},{lastName:lastName1}],
-                [Op.between]:[start,end]
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -194,7 +209,8 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 createdAt:{
-                    [Op.between]:[start,end]
+                    [Op.between]:[start,end],
+                    
                 }
             }
         })

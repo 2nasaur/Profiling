@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 //const test = require('../models/test.model')
 
 
-const sequelize = new Sequelize('barangay_profiling', 'root', '', {
+const sequelize = new Sequelize('barangay_profiling', 'root', 'Mund@k@6969', {
   dialect: 'mysql',
   host: 'localhost',
   timezone: '+08:00'
