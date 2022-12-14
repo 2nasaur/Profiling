@@ -73,6 +73,7 @@ exports.searchFilter = (req,res)=>{
             offset: pageNo,
             where:{
                 [Op.or]:[{sex:sex},{firstName:firstName},{lastName:lastName}],
+                [Op.between]:[start,end]
                 
             } 
         })
@@ -90,12 +91,12 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                sex:sex1
+                sex:sex1,
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
             res.json(results)
-            console.log(typeof sex)
         })
         .catch(err=>{
             console.log(err)
@@ -107,7 +108,8 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                firstName:firstName1
+                firstName:firstName1,
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
@@ -123,7 +125,8 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                lastName:lastName1
+                lastName:lastName1,
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
@@ -139,7 +142,8 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                [Op.and]:[{sex:sex1},{firstName:firstName1}]
+                [Op.and]:[{sex:sex1},{firstName:firstName1}],
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
@@ -155,7 +159,8 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                [Op.and]:[{sex:sex1},{lastName:lastName1}]
+                [Op.and]:[{sex:sex1},{lastName:lastName1}],
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
@@ -171,7 +176,8 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                [Op.and]:[{firstName:firstName1},{lastName:lastName1}]
+                [Op.and]:[{firstName:firstName1},{lastName:lastName1}],
+                [Op.between]:[start,end]
             } 
         })
         .then(results =>{
