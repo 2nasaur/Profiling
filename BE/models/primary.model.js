@@ -59,6 +59,10 @@ const primary = sequelize.define('mainProfile',{
     tuborcolosis:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    pregnant:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });

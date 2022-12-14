@@ -3,6 +3,7 @@ const router = express.Router();
 const test = require('../controller/test.controller')
 const primary = require('../controller/primary.controller')
 const secondary = require('../controller/secondary.controller')
+const dashboard = require('../controller/dashboard.controller')
 
 router.get('/welcome',(req, res)=>{
     res.send('welcome');
@@ -23,6 +24,7 @@ router.get('/allSecondary',secondary.primaryGetAll)
 router.post('/secondary',secondary.primaryPost)
 router.patch('/secondary',secondary.updatePrimary)
 
+router.get('/dashboard',dashboard.dashboard)
 
 
 module.exports = router;

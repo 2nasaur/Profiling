@@ -9,17 +9,56 @@ exports.primaryGetAll = (req,res)=>{
     const sex = req.query.sex
     const pageNo = (page-1)
     const size1 = parseInt(size)
-    console.log(typeof size1)
-    model.findAll({
-        limit: size1,
-        offset: pageNo
-    })
-    .then(results =>{
-        res.json(results)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
+    const params1 = req.query.search
+    const Op = Sequelize.Op;
+
+    let params
+    if(params1 == '')
+    params = true
+    else
+    params == false
+
+    if (params == true)
+        model.findAll({
+            limit: size1,
+            offset: pageNo
+        })
+        .then(results =>{
+            res.json(results)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    else
+        model.findAll({
+            limit: size1,
+            offset: pageNo,
+            where:{
+                [Op.or]:[
+                    {
+                        firstName:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    },
+                    {
+                        lastName:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    },
+                    {
+                        address:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    }
+                ]
+            }
+        })
+        .then(results =>{
+            res.json(results)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     
 };
 exports.searchFilter = (req,res)=>{
@@ -256,6 +295,7 @@ exports.primaryPost = (req,res)=>{
     const mh = req.body.mh;
     const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
+    const pregnant = req.body.pregnant;
     
 
     let status
@@ -285,6 +325,7 @@ exports.primaryPost = (req,res)=>{
         mh:mh,
         tuborcolosis:tuborcolosis,
         malnutrision:malnutrision,
+        pregnant:pregnant,
         status:status
     })
     .then(result =>{
@@ -306,6 +347,7 @@ exports.updatePrimary = (req,res) => {
     const ea = req.body.ea;
     const mh = req.body.mh;
     const id = req.query.id;
+    const pregnant = req.body.pregnant;
     const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
 
@@ -336,6 +378,7 @@ exports.updatePrimary = (req,res) => {
         mh:mh,
         malnutrision:malnutrision,
         tuborcolosis:tuborcolosis,
+        pregnant:pregnant,
         status:status
     },{
         where:{
