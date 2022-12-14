@@ -72,7 +72,7 @@ exports.searchFilter = (req,res)=>{
             limit: size1,
             offset: pageNo,
             where:{
-                [Op.or]:[{sex:sex},{firstName:firstName},{lastName:lastName}],
+                [Op.or]:[{sex:sex1},{firstName:firstName1},{lastName:lastName1}],
                 createdAt:{
                     [Op.between]:[start,end]
                 }
@@ -81,7 +81,7 @@ exports.searchFilter = (req,res)=>{
             } 
         })
         .then(results =>{
-            console.log(here)
+
             res.json(results)
         })
         .catch(err=>{
@@ -254,7 +254,9 @@ exports.primaryPost = (req,res)=>{
     const typeofhousehold = req.body.typeofhousehold;
     const ea = req.body.ea;
     const mh = req.body.mh;
+    const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
+    
 
     let status
     if(soi <= 5000){
@@ -281,6 +283,7 @@ exports.primaryPost = (req,res)=>{
         typeofhousehold:typeofhousehold,
         ea:ea,
         mh:mh,
+        tuborcolosis:tuborcolosis,
         malnutrision:malnutrision,
         status:status
     })
@@ -303,6 +306,7 @@ exports.updatePrimary = (req,res) => {
     const ea = req.body.ea;
     const mh = req.body.mh;
     const id = req.query.id;
+    const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
 
     let status
@@ -331,6 +335,7 @@ exports.updatePrimary = (req,res) => {
         ea:ea,
         mh:mh,
         malnutrision:malnutrision,
+        tuborcolosis:tuborcolosis,
         status:status
     },{
         where:{

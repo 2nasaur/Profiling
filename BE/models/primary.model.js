@@ -55,6 +55,10 @@ const primary = sequelize.define('mainProfile',{
     malnutrision:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    tuborcolosis:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });
