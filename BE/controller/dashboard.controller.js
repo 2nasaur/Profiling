@@ -7,11 +7,10 @@ const yr1 = req.query.year
 const year = new Date().getFullYear();
 
 let yr
-if (yr1 == false)
-yr = yr1
+if (yr1 == undefined)
+yr = year
 else
 yr = yr1
-
 
 
 const totalFamily = await model.count()  
@@ -99,10 +98,9 @@ const yrtotalFemale = await [`${f1}`,`${f2}`,`${f3}`,`${f4}`,`${f5}`,`${f6}`,`${
 const yrtotal4ps = await [`${q1}`,`${q2}`,`${q3}`,`${q4}`,`${q5}`,`${q6}`,`${q7}`,`${q8}`,`${q9}`,`${q10}`,`${q11}`,`${q12}`]
 const yrtotalPreg = await [`${p1}`,`${p2}`,`${p3}`,`${p4}`,`${p5}`,`${p6}`,`${p7}`,`${p8}`,`${p9}`,`${p10}`,`${p11}`,`${p12}`]
 
-const dashBoard = await {"TotalFamily":`${totalFam}`,"TotalQualified":`${totalQualified}`,"TotalMalnorished":`${totalMalnutrision}`,"TotalPregnant":`${totaPregnant}`,"FamilyYr":`${totalFam}`,"MaleYr":`${yrtotalMale}`,"FemaleYr":`${yrtotalFemale}`,"4psYr":`${yrtotal4ps}`,"PregnantYr":`${yrtotalPreg}`};
+const dashBoard = await {"TotalFamily":`${totalFam}`,"TotalQualified":`${totalQualified}`,"TotalMalnorished":`${totalMalnutrision}`,"TotalPregnant":`${totaPregnant}`,"FamilyYr":`${yrtotalFam}`,"MaleYr":`${yrtotalMale}`,"FemaleYr":`${yrtotalFemale}`,"4psYr":`${yrtotal4ps}`,"PregnantYr":`${yrtotalPreg}`};
 
-console.log(year)
-console.log(yr1)
+console.log(yr)
 await res.json(dashBoard);
 
 };

@@ -49,7 +49,11 @@ exports.primaryGetAll = (req,res)=>{
                         address:{
                             [Op.like]:`%${params1}%`
                         }
-                    }
+                    },
+                    {
+                        status:params1
+                        }
+                    
                 ]
             }
         })
