@@ -3,11 +3,26 @@ const Sequelize = require('sequelize');
 
 exports.dashboard = async(req,res)=>{
 const Op = Sequelize.Op;
-const yr = req.query.year
+const yr1 = req.query.year
+const year = new Date().getFullYear();
+
+let yr
+if (yr1 == false)
+yr = yr1
+else
+yr = yr1
+
+
+
 const totalFamily = await model.count()  
 const qualified = await model.count({where:{status: "Qualified"}})  
 const malnutrision = await model.count({where:{malnutrision: "yes"}})  
 const pregnant = await model.count({where:{pregnant: "yes"}})  
+
+
+
+
+
 //all of this will be total registered
 const r1 = await model.count({where:{createdAt:{[Op.between]:[`${yr}-01-01 00:00:00`,`${yr}-01-31 11:59:59`]}}}); 
 const r2 = await model.count({where:{createdAt:{[Op.between]:[`${yr}-02-01 00:00:00`,`${yr}-02-28 11:59:59`]}}});
@@ -86,7 +101,8 @@ const yrtotalPreg = await [`${p1}`,`${p2}`,`${p3}`,`${p4}`,`${p5}`,`${p6}`,`${p7
 
 const dashBoard = await {"TotalFamily":`${totalFam}`,"TotalQualified":`${totalQualified}`,"TotalMalnorished":`${totalMalnutrision}`,"TotalPregnant":`${totaPregnant}`,"FamilyYr":`${totalFam}`,"MaleYr":`${yrtotalMale}`,"FemaleYr":`${yrtotalFemale}`,"4psYr":`${yrtotal4ps}`,"PregnantYr":`${yrtotalPreg}`};
 
-console.log(dashBoard)
+console.log(year)
+console.log(yr1)
 await res.json(dashBoard);
 
 };
