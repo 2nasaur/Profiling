@@ -21,7 +21,7 @@ const primary = sequelize.define('mainProfile',{
         allowNull: true
     },
     contact:{
-        type: Sequelize.INTEGER ,
+        type: Sequelize.INTEGER(12) ,
         allowNull: true
     },
     sex:{
