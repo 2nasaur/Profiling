@@ -2,11 +2,11 @@ const model = require('../models/primary.model')
 const onCreate = {message:"done creating a Profile"}
 const onUpdate = {message:"done Updating a Profile"}
 const Sequelize = require('sequelize');
+const secondary = require('../models/secondary.model');
 
 exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
     const size = req.query.size
-    const sex = req.query.sex
     const pageNo = (page-1)
     const size1 = parseInt(size)
     const params1 = req.query.search
@@ -270,11 +270,13 @@ exports.searchFilter = (req,res)=>{
 
 exports.primaryGetById = (req,res)=>{
     const id = req.query.id
-    model.findOne({
-        where:{
-            id:id
-        }
-    })
+    model.findByPk(id,{
+        include:[{
+            model: secondary
+        }]
+    }
+
+    )
     .then(results=>{
         res.json(results)
     }).catch(err=>{

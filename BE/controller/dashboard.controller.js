@@ -18,10 +18,6 @@ const qualified = await model.count({where:{status: "Qualified"}})
 const malnutrision = await model.count({where:{malnutrision: "yes"}})  
 const pregnant = await model.count({where:{pregnant: "yes"}})  
 
-
-
-
-
 //all of this will be total registered
 const r1 = await model.count({where:{createdAt:{[Op.between]:[`${yr}-01-01 00:00:00`,`${yr}-01-31 11:59:59`]}}}); 
 const r2 = await model.count({where:{createdAt:{[Op.between]:[`${yr}-02-01 00:00:00`,`${yr}-02-28 11:59:59`]}}});
