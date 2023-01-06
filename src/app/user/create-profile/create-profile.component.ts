@@ -23,6 +23,8 @@ export class CreateProfileComponent implements OnInit {
   typeofhousehold:any;
   pregnancy:any;
   mh:any;
+  malnutrision:any;
+  tuborcolosis:any;
 
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router, public dialog: MatDialog) { }

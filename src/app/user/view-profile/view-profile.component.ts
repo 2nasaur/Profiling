@@ -24,6 +24,8 @@ export class ViewProfileComponent implements OnInit {
   typeofhousehold:any;
   pregnancy:any;
   mh:any;
+  malnutrision:any;
+  tuborcolosis:any;
 
   constructor(private userService: UserService, private authService: AuthService, public dialog: MatDialog, private router: Router) { }
 
@@ -51,6 +53,8 @@ export class ViewProfileComponent implements OnInit {
         this.typeofhousehold = data.typeofhousehold;
         this.pregnancy = data.pregnancy;
         this.mh = data.mh;
+        this.malnutrision = data.malnutrision;
+        this.tuborcolosis = data.tuborcolosis;
       }
     });
   }
@@ -59,6 +63,7 @@ export class ViewProfileComponent implements OnInit {
     let dialogRef = this.dialog.open(CreateFamilyProfileComponent, {
       width: '60%',
       minWidth: '320px',
+      maxHeight: '500px'
       // data: { 
       //   // first_name: this.singleData.first_name, 
       //   // middle_name: this.singleData.middle_name,
@@ -71,6 +76,7 @@ export class ViewProfileComponent implements OnInit {
     let dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: '40%',
       minWidth: '320px',
+      maxHeight: '500px'
       // data: { 
       //   // first_name: this.singleData.first_name, 
       //   // middle_name: this.singleData.middle_name,

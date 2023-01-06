@@ -45,8 +45,8 @@
 
                 <mat-list-item><div fxFlex='40' class='label'>Education Attainment:</div> <div fxFlex="60%" class='div-values'>{{ea}}</div></mat-list-item>
                 <mat-divider></mat-divider>
-
-                <mat-list-item  *ngIf="sex === 'female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
+                
+                <mat-list-item  *ngIf="sex === ''"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
 
                     <mat-form-field >
                         <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
@@ -56,9 +56,33 @@
                         </mat-select>
                       </mat-form-field>
                     </div></mat-list-item>
-
+                    <mat-divider></mat-divider>
                 <mat-list-item><div fxFlex='40' class='label'>Medical History:</div> <div fxFlex="60%" class='div-values'>{{mh}}</div></mat-list-item>
                 <mat-divider></mat-divider>
+                
+                <mat-list-item><div fxFlex='40' class='label'>Malnutrision Case:</div> <div fxFlex="60%" class='div-values'>
+
+                    <mat-form-field >
+                        <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision">
+                          <mat-option value="yes">Yes</mat-option>
+                          <mat-option value="no">No</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div></mat-list-item>
+
+                    <mat-divider></mat-divider>
+                
+                <mat-list-item><div fxFlex='40' class='label'>Tuborcolosis Case:</div> <div fxFlex="60%" class='div-values'>
+
+                    <mat-form-field >
+                        <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis">
+                          <mat-option value="yes">Yes</mat-option>
+                          <mat-option value="no">No</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div></mat-list-item>
                 <br>
                 <br>
                 <div id='controls'>

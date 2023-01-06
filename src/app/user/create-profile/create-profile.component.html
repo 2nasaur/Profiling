@@ -50,12 +50,55 @@
             </mat-list-item>
                 <!-- <mat-divider></mat-divider> -->
 
-                <div class="label">
+
+
+
+
+                <div class="row">
+                    <div class="column">Contact Number</div>
+                    <div class="column">Sex</div>
+                    <div class="column">Civil Status</div>
+                  </div>
+
+
+                  <div class="row">
+                    <mat-list-item>
+                    <mat-form-field class="input-fields" appearance="outline">
+                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$" placeholder="Contact Number">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex" placeholder="Sex">
+                                <mat-option value="male">Male</mat-option>
+                                <mat-option value="female">Female</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <input matInput name='civilStatus' [(ngModel)]='civilStatus' required placeholder="Civil Status">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+                <!-- <div class="label">
                     <label class="label-body">Contact Number</label>
                     <label class="label-body">Sex</label>
                     <label class="label-body2">Civil Status</label>
-                </div>
-                <div class="body2">
+                </div> -->
+                <!-- <div class="body2">
                 <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
                         <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$" placeholder="Contact Number">
@@ -76,16 +119,50 @@
                         <mat-error></mat-error>
                     </mat-form-field>
                 </mat-list-item>
-                </div>
+                </div> -->
                 <!-- <mat-divider></mat-divider> -->
 
 
-                <div class="label">
+
+
+                <div class="row">
+                    <div class="column">Source of Income</div>
+                    <div class="column">Type of Household</div>
+                    <div class="column">Educational Attainment</div>
+                  </div>
+
+                  <div class="row">
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <input matInput name='soi' [(ngModel)]='soi' required placeholder="Source of Income">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold" placeholder="Type of Household">
+                                <mat-option>None</mat-option>
+                                <mat-option value="dueling">Dueling</mat-option>
+                                <mat-option value="concrete">Concrete</mat-option>
+                                <mat-option value="barong">Barong barong</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <input matInput name='ea' [(ngModel)]='ea' required placeholder="Educational Attainment">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                  </div>
+
+
+                <!-- <div class="label">
                     <label class="label-body">Source of Income</label>
                     <label class="label-body4">Type of Household</label>
                     <label class="label-body5">Educational Attainment</label>
-                </div>
-                <div class="body2">
+                </div> -->
+                <!-- <div class="body2">
                 <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
                         <input matInput name='soi' [(ngModel)]='soi' required placeholder="Source of Income">
@@ -108,16 +185,63 @@
                         <mat-error></mat-error>
                     </mat-form-field>
                 </mat-list-item>
-                </div>
+                </div> -->
                 <!-- <mat></mat> -->
 
                 <!-- <mat-divider></mat-divider> -->
 
 
-                <div class="label">
-                    <label class="label-body">Medical History</label>
-                    <label class="label-body3" *ngIf="sex === 'female'">Pregancy</label>
+                <div class="row">
+                    <div class="column1">Medical History</div>
+                    <div class="column1" *ngIf="sex === 'female'">Pregancy</div>
+                  </div>
+
+                  <div class="row">
+                    <mat-list-item>
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <input matInput name='mh' [(ngModel)]='mh' required placeholder="NA if none">
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="sex === 'female'">
+                        <mat-form-field class="input-fields" appearance="outline">
+                            <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy" placeholder="Pregnancy">
+                                <mat-option value="yes">Yes</mat-option>
+                                <mat-option value="no">No</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </mat-list-item>
+                  </div>
+
+                  <div class='label'>
+                    Malnutrion Case:
                 </div>
+                <mat-list-item>
+                    <mat-form-field class="input-fields" appearance="outline">
+                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision" placeholder="Malnutrision">
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </mat-list-item>
+
+                <div class='label'>
+                    Tuborcolosis Case:
+                </div>
+                <mat-list-item>
+                    <mat-form-field class="input-fields" appearance="outline">
+                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis" placeholder="Tuborcolosis">
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </mat-list-item>
+
+
+                <!-- <div class="label">
+                    <label class="label-body">Medical History</label>
+                    <label class="label-body3" *ngIf="sex === 'female'">Pregancy</label> -->
+                <!-- </div>
                 <div class="body2">
                 <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
@@ -133,7 +257,7 @@
                           </mat-select>
                     </mat-form-field>
                 </mat-list-item>
-                </div>
+                </div> -->
                 <!-- <mat></mat> -->
 
 

@@ -26,7 +26,7 @@ export class ViewAllProfileComponent implements OnInit {
 
   pageSize:number=10;
   pageIndex:number = 1;
-  keyword:any;
+  keyword='';
   totalNumber:any;
   totalPages:any;
   loadblock: boolean = false;
@@ -50,12 +50,26 @@ export class ViewAllProfileComponent implements OnInit {
   }
 
   applyFilter(event:any) {
+    console.log('its here')
+    let filterValue = event.value;
+    //this.data.filter = filterValue.trim().toLowerCase();
+    this.keyword = filterValue.trim().toLowerCase();
+    this.search();
+}
+
+  search() {
+    this.userService.getSearch(this.authService.jwttoken, this.pageIndex, this.pageSize, this.keyword).subscribe(data=>{
+      this.dataSource = data
+    })
+  }
+
+  // applyFilter(event:any) {
       
-      let filterValue = event.value;
-      //this.data.filter = filterValue.trim().toLowerCase();
-      this.keyword = filterValue.trim().toLowerCase();
-      // this.search();
-    }
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  //   this.keyword = filterValue.trim().toLowerCase();
+  //   }
 
   createProfile(){
       this.router.navigate(['user/create-profile']);
@@ -63,7 +77,7 @@ export class ViewAllProfileComponent implements OnInit {
 
   getAllProfile(){
       // console.log('hey')
-      this.userService.viewAllProfile(this.authService.jwttoken, this.pageIndex, this.pageIndex,).subscribe(
+      this.userService.viewAllProfile(this.authService.jwttoken, this.pageIndex, this.pageSize, this.keyword).subscribe(
         data =>{
           console.log(data)
           if (data.result === 'failure') {
@@ -80,7 +94,7 @@ export class ViewAllProfileComponent implements OnInit {
             this.totalNumber = data[0].total;
             this.totalPages = Math.ceil(this.totalNumber/this.pageSize);
             console.log('dito dapat 3')
-            this.userService.viewAllProfile(this.authService.jwttoken, this.pageIndex, this.pageSize).subscribe(
+            this.userService.viewAllProfile(this.authService.jwttoken, this.pageIndex, this.pageSize, this.keyword).subscribe(
               data => {
                 console.log('dito dapat 4')
                 if (data.result === 'failure') {

@@ -1,50 +1,67 @@
 <mat-card>
+  <form #reportProfile='ngForm' (ngSubmit)='submit(reportProfile.value)'>
     <div class="head-head">
     <h3>Filtering Data</h3>
     </div>
 <mat-form-field class="dateFormField" appearance="outline">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date">
-      <input matEndDate placeholder="End date">
+      <input matStartDate [(ngModel)]="startDate" placeholder="Start date">
+      <input matEndDate [(ngModel)]="endDate" placeholder="End date">
     </mat-date-range-input>
-    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
 
-  <button class="control" mat-raised-button (click)="toggleFilter()"><mat-icon>filter_list</mat-icon>Add Filter</button>
-  <button class="control" mat-raised-button color="warn"><mat-icon>clear_all</mat-icon>Clear Filter</button>
+  <button mat-raised-button color='primary' class="control" type='submit'><mat-icon>search</mat-icon> Search Profile </button>
+  <button class="control" mat-raised-button type='button' (click)="toggleFilter()"><mat-icon>filter_list</mat-icon>Add Filter</button>
+  <button class="control" mat-raised-button type='button' (click)="clearFilter()" color="warn"><mat-icon>clear_all</mat-icon>Clear Filter</button>
 
 
   <div class="div1" *ngIf="!divVisible">
-    <mat-list>
-    <mat-list-item><div fxFlex='40%' class='label'></div>
-      <div fxFlex="100%" class='div-values'>
-      <mat-form-field class='input-fields' appearance='outline'>
-          <input matInput name='firstName' [(ngModel)]='firstName' required pattern="^[a-zA-Z ]+$" placeholder="First Name">
-          <mat-error></mat-error>
-      </mat-form-field>
-  </div></mat-list-item>
-  <!-- <mat-divider></mat-divider> -->
-  <mat-list-item><div fxFlex='40' class='label'></div> <div fxFlex="60%" class='div-values'>
-          <mat-form-field class='input-fields' appearance='outline'>
-              <input matInput name='lastName' [(ngModel)]='lastName' required pattern="^[#.0-9a-zA-Z ,-]+$" placeholder="Last Name">
+    <div class='label'>
+      Name:
+      </div>
+      <mat-list-item>
+          <mat-form-field class="input-fields" appearance="outline">
+              <input matInput name='firstName' [(ngModel)]='firstName' pattern="^[a-zA-Z ]+$" placeholder="First Name">
               <mat-error></mat-error>
           </mat-form-field>
-  </div></mat-list-item>
-</mat-list>
-  </div>
+          <mat-form-field class="input-fields" appearance="outline">
+              <input matInput name='lastName' [(ngModel)]='lastName' pattern="^[a-zA-Z ]+$" placeholder="Last Name">
+              <mat-error></mat-error>
+          </mat-form-field>
+      </mat-list-item>
 
+      <mat-list-item>
+        <mat-form-field class="input-fields" appearance="outline">
+            <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex" placeholder="Gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </mat-list-item>
+      
+
+      <!-- <section class="example-section">
+        <h4>Select Gender:</h4>
+        <p><mat-checkbox value="male">Male</mat-checkbox></p>
+        <p><mat-checkbox value="female">Female</mat-checkbox></p>
+      </section> -->
+    
+
+  </div>
+</form>
 
 </mat-card>
 
 <mat-card class="mat-card2">
     <div class="head-body">
     <h3>Filtered Data</h3>
-    <button class="generate-control" mat-raised-button><mat-icon>picture_as_pdf</mat-icon>Generate Reports</button>
+    <button class="generate-control" (click)="exportExcel()" mat-raised-button><mat-icon>picture_as_pdf</mat-icon>Generate Reports</button>
     </div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table id="excel-table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Position Column -->
         <!-- <ng-container matColumnDef="id">
@@ -83,7 +100,7 @@
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;let element"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let element" [ngClass]="{ 'highlight': element.status == 'Not Qualified', 'highlight2': element.status == 'Qualified' }"></tr>
       
         <!-- Row shown when there is no matching data. -->
         <!-- <tr class="mat-row" *matNoDataRow>

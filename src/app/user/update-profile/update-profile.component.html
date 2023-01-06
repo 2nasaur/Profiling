@@ -5,7 +5,7 @@
    <div>
            <h2>Owner Details</h2>
            <br>
-           <!-- <form #addProfileForm='ngForm' (ngSubmit)='submit(addProfileForm.value)'> -->
+           <form #updateProfileForm='ngForm' (ngSubmit)='update(updateProfileForm.value)'>
             <mat-list>
                 <mat-list-item><div fxFlex='40' class='label'>First Name: </div><div fxFlex="60%" class='div-values'>
                     <mat-form-field class='input-fields' appearance='outline'>
@@ -107,6 +107,28 @@
         </div></mat-list-item>
         <!-- <mat-divider></mat-divider> -->
 
+        <mat-list-item><div fxFlex='40' class='label'>Malnutrision Case:</div> <div fxFlex="60%" class='div-values'>
+
+            <mat-form-field class='input-fields' appearance='outline'>
+                <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision">
+                  <mat-option value="yes">Yes</mat-option>
+                  <mat-option value="no">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div></mat-list-item>
+
+            <mat-list-item><div fxFlex='40' class='label'>Tuborcolosis Case:</div> <div fxFlex="60%" class='div-values'>
+
+                <mat-form-field class='input-fields' appearance='outline'>
+                    <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                    <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis">
+                      <mat-option value="yes">Yes</mat-option>
+                      <mat-option value="no">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div></mat-list-item>
+
                 <br>
                 <br>
 
@@ -116,7 +138,7 @@
             <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>
         </div>
             </mat-list>
-        <!-- </form> -->
+        </form>
 
    </div><br>
 

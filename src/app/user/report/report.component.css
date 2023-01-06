@@ -3,7 +3,7 @@ mat-card{
      width:80%;
      margin-top:2%;
    /* margin:0 10%; */
-     overflow: auto;
+     overflow: hidden;
      /* display: flex; */
      height: auto;
      border-radius: 6px;
@@ -38,7 +38,7 @@ th{
 }
 
 .dateFormField {
-    width: 50%;
+    width: 100%;
     margin-right: 5%;
 }
 
@@ -52,3 +52,27 @@ th{
     display: flex;
     margin-right: 5%;
 }
+
+.input-fields{
+    /* display: block; */
+    width: 100%;
+    padding: 5px;
+    /* margin-top: 15px; */
+}
+
+.label{
+    margin-top: 15px;
+}
+
+tr:hover{
+    background-color:antiquewhite;
+    cursor : pointer;
+  }
+
+  .highlight{
+    background:lightgrey;
+  }
+
+  .highlight2{
+    background:lightgreen;
+  }

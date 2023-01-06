@@ -29,6 +29,8 @@ import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgChartsModule } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -48,8 +50,6 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { CreateFamilyProfileComponent } from './create-family-profile/create-family-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
-import {MatNativeDateModule} from '@angular/material/core';
-
 
 
 
@@ -104,7 +104,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDialogModule,
     NgChartsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule,
     
     
     

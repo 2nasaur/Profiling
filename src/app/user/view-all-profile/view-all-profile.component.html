@@ -8,8 +8,8 @@
         <mat-form-field>
             
             <mat-label>Search</mat-label>
-            <input matInput #a name='searchbox'>
-            <button type='button' mat-icon-button matSuffix (click)='applyFilter(a)'><mat-icon>search</mat-icon></button>
+            <input matInput #a (keyup)="applyFilter(a)" name='searchbox'>
+            <button mat-icon-button matSuffix ><mat-icon>search</mat-icon></button>
             
                 
             

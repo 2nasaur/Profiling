@@ -177,6 +177,36 @@ mat-form-field{
   }
 
 
+  .column {
+    justify-content: space-between;
+    width: 33.33%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .row {
+    width: auto;
+  }
+
+  /* .column{
+    width: 100%;
+    padding: 5px;
+  } */
+
+  .column1{
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .row {
+    justify-content: left;
+  }
+
 
 
 

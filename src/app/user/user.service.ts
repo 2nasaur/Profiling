@@ -11,10 +11,13 @@ import { of } from 'rxjs';
 })
 export class UserService {
 
+    id:any;
+
     testUrl = '';
     profileUrl = environment.apiUrl + '/primary';
     allProfileUrl = environment.apiUrl + '/allPrimary';
     secondaryProfileUrl = environment.apiUrl + '/secondary';
+    viewReportUrl = environment.apiUrl + '/search';
 
 
   constructor(private http:HttpClient) { }
@@ -30,6 +33,15 @@ export class UserService {
       );
   }
 
+  updateProfile(profiledata: any, jwt: any, id:any): Observable<any> {
+    let body = profiledata;
+    let options = {headers:new HttpHeaders({Authorization:jwt}),params: new HttpParams().set('id',id)}
+    return this.http.patch<any>(this.profileUrl, body,options).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   addSecondaryProfile(secondarydata: any, jwtToken: any): Observable<any> {
     const options = { headers: new HttpHeaders({'Content-Type':  'application/json', Authorization: jwtToken})};
     return this.http
@@ -41,11 +53,12 @@ export class UserService {
       );
   }
 
-  viewAllProfile(jwt: any,page:any,pageSize:any){
+  viewAllProfile(jwt: any,page:any,pageSize:any, search:any){
     let options = { headers: new HttpHeaders(
       {'Authorization':jwt}),params: new HttpParams().
       set('page',page).
-      set('size',pageSize)
+      set('size',pageSize).
+      set('search',search)
     };
     return this.http.get<any>(this.allProfileUrl,options).pipe(
       map(data=>data),
@@ -57,6 +70,38 @@ export class UserService {
   viewProfile(jwt: any,profileID: any):Observable<any>{
     let options = { headers : new HttpHeaders({'Content-Type':'application/json'}),params: new HttpParams().set('id',profileID)}
     return this.http.get<any>(this.profileUrl,options).pipe(
+      map(data=>data),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  viewReports(jwt: any, startDate: any, endDate: any, page: any, size: any, firstName:any, lastName:any, sex:any): Observable<any> {
+    const options = { headers: new HttpHeaders({Authorization: jwt}), params: new HttpParams()
+      .set('start', startDate)
+      .set('end', endDate)
+      .set('page', page)
+      .set('size', size)
+      .set('firstName', firstName)
+      .set('lastName', lastName)
+      .set('sex', sex)};
+    return this.http
+      .get<any>(this.viewReportUrl, options)
+      .pipe(
+        map(data => data),
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  getSearch(jwt:any,page: any, size: any, search:any):Observable<any>{
+    let options = { headers: new HttpHeaders(
+      {'Authorization':jwt}),params: new HttpParams()
+      .set('page', page)
+      .set('size', size)
+      .set('search', search)
+    };
+    return this.http.get<any>(this.allProfileUrl,options).pipe(
       map(data=>data),
       retry(3),
       catchError(this.handleError)

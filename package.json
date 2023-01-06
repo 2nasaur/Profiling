@@ -21,9 +21,11 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "chart.js": "^4.0.1",
+    "mat-table-exporter": "1.2",
     "ng2-charts": "^4.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

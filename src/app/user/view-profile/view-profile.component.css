@@ -1,6 +1,6 @@
-h2{
-    /* margin-left:10%; */
-}
+.mat-dialog-container {
+    max-height: 500px;
+  }
 
 mat-spinner{
     position:fixed;

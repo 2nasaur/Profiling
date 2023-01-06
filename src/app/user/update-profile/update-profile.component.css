@@ -37,3 +37,12 @@ button#add{
 .mat-list-item{
   margin: 20px;
 }
+
+div{
+  max-height: auto;
+  /* width: 500px; */
+}
+
+.mat-dialog-container {
+  max-height: 500px;
+}

@@ -7,6 +7,10 @@
     width: auto;
 }
 
+.card{
+  /* width: 25%; */
+}
+
 .row2 {
   display: flex;
 }
