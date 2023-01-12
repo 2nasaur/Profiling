@@ -293,7 +293,7 @@ exports.primaryPost = (req,res)=>{
     const lastName = req.body.lastName;
     const address = req.body.address;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const typeofhousehold = req.body.typeofhousehold;
@@ -311,12 +311,6 @@ exports.primaryPost = (req,res)=>{
         status = "Not Qualified"
     }
 
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
-    }
 
     model.create({
         firstName:firstName,

@@ -65,7 +65,7 @@ exports.updatePrimary = (req,res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const ea = req.body.ea;
@@ -73,12 +73,6 @@ exports.updatePrimary = (req,res) => {
     const typeOfRelationship = req.body.typeOfRelationship;
     const id = req.query.id
 
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
-    }
 
     model.update({
         firstName:firstName,
