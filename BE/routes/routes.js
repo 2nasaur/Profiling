@@ -4,6 +4,7 @@ const test = require('../controller/test.controller')
 const primary = require('../controller/primary.controller')
 const secondary = require('../controller/secondary.controller')
 const dashboard = require('../controller/dashboard.controller')
+const auth = require('../controller/auth.controller')
 
 router.get('/welcome',(req, res)=>{
     res.send('welcome');
@@ -25,6 +26,8 @@ router.post('/secondary',secondary.primaryPost)
 router.patch('/secondary',secondary.updatePrimary)
 
 router.get('/dashboard',dashboard.dashboard)
+
+router.post('/auth',auth.postAuth)
 
 
 module.exports = router;

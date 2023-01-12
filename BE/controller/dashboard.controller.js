@@ -84,17 +84,17 @@ const p10 = await model.count({where:{pregnant: "yes",createdAt:{[Op.between]:[`
 const p11 = await model.count({where:{pregnant: "yes",createdAt:{[Op.between]:[`${yr}-11-01 00:00:00`,`${yr}-11-30 11:59:59`]}}});
 const p12 = await model.count({where:{pregnant: "yes",createdAt:{[Op.between]:[`${yr}-12-01 00:00:00`,`${yr}-12-31 11:59:59`]}}});
 
-const totalFam = await `${totalFamily}`
-const totalQualified = await `${qualified}`
-const totalMalnutrision = await `${malnutrision}`
-const totaPregnant = await `${pregnant}`
-const yrtotalFam = await [`${r1}`,`${r2}`,`${r3}`,`${r4}`,`${r5}`,`${r6}`,`${r7}`,`${r8}`,`${r9}`,`${r10}`,`${r11}`,`${r12}`]
-const yrtotalMale = await [`${m1}`,`${m2}`,`${m3}`,`${m4}`,`${m5}`,`${m6}`,`${m7}`,`${m8}`,`${m9}`,`${m10}`,`${m11}`,`${m12}`]
-const yrtotalFemale = await [`${f1}`,`${f2}`,`${f3}`,`${f4}`,`${f5}`,`${f6}`,`${f7}`,`${f8}`,`${f9}`,`${f10}`,`${f11}`,`${f12}`]
-const yrtotal4ps = await [`${q1}`,`${q2}`,`${q3}`,`${q4}`,`${q5}`,`${q6}`,`${q7}`,`${q8}`,`${q9}`,`${q10}`,`${q11}`,`${q12}`]
-const yrtotalPreg = await [`${p1}`,`${p2}`,`${p3}`,`${p4}`,`${p5}`,`${p6}`,`${p7}`,`${p8}`,`${p9}`,`${p10}`,`${p11}`,`${p12}`]
+const totalFam = await totalFamily
+const totalQualified = await qualified
+const totalMalnutrision = await malnutrision
+const totaPregnant = await pregnant
+const yrtotalFam = await [r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12]
+const yrtotalMale = await [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12]
+const yrtotalFemale = await [f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12]
+const yrtotal4ps = await [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12]
+const yrtotalPreg = await [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12]
 
-const dashBoard = await {"TotalFamily":`${totalFam}`,"TotalQualified":`${totalQualified}`,"TotalMalnorished":`${totalMalnutrision}`,"TotalPregnant":`${totaPregnant}`,"FamilyYr":`${yrtotalFam}`,"MaleYr":`${yrtotalMale}`,"FemaleYr":`${yrtotalFemale}`,"4psYr":`${yrtotal4ps}`,"PregnantYr":`${yrtotalPreg}`};
+const dashBoard = await {"TotalFamily":totalFam,"TotalQualified":totalQualified,"TotalMalnorished":totalMalnutrision,"TotalPregnant":totaPregnant,"FamilyYr":yrtotalFam,"MaleYr":yrtotalMale,"FemaleYr":yrtotalFemale,"4psYr":yrtotal4ps,"PregnantYr":yrtotalPreg};
 
 console.log(yr)
 await res.json(dashBoard);
