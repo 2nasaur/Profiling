@@ -3,6 +3,8 @@ const onCreate = {message:"done creating a Profile"}
 const onUpdate = {message:"done Updating a Profile"}
 const Sequelize = require('sequelize');
 const secondary = require('../models/secondary.model');
+const onDel = {message:"Entry has been Deleted"};
+const onErr = {message:"Error, Try Again"};
 
 exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
@@ -302,6 +304,7 @@ exports.primaryPost = (req,res)=>{
     const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
     const pregnant = req.body.pregnant;
+    const remarks = req.body.remarks;
     
 
     let status
@@ -326,7 +329,8 @@ exports.primaryPost = (req,res)=>{
         tuborcolosis:tuborcolosis,
         malnutrision:malnutrision,
         pregnant:pregnant,
-        status:status
+        status:status,
+        remarks:remarks
     })
     .then(result =>{
         res.json(onCreate)
@@ -350,6 +354,7 @@ exports.updatePrimary = (req,res) => {
     const pregnant = req.body.pregnant;
     const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
+    const remarks = req.body.remarks;
 
     let status
     if(soi <= 5000){
@@ -379,7 +384,8 @@ exports.updatePrimary = (req,res) => {
         malnutrision:malnutrision,
         tuborcolosis:tuborcolosis,
         pregnant:pregnant,
-        status:status
+        status:status,
+        remarks:remarks
     },{
         where:{
             id: id
@@ -391,3 +397,16 @@ exports.updatePrimary = (req,res) => {
     })
 }
 
+exports.deletePrimary = (req,res) => {
+    const id = req.query.id
+
+    model.destroy({
+        where:{
+            id:id
+        }
+    }).then(result =>{
+        res.json(onDel)
+    }).catch(err=>{
+        res.json(onErr)
+    })
+}

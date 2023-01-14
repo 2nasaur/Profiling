@@ -43,6 +43,22 @@ const secondary = sequelize.define('subProfile',{
     typeOfRelationship:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    tuborcolosis:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    malnutrision:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    pregnant:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    remarks:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });

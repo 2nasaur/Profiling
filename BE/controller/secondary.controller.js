@@ -3,6 +3,7 @@ const onCreate = {message:"Family member has been added"}
 const notExist = {message:"No relatioship"}
 const onErr = {message:"Error, Please Try Again"}
 const onUpdt = {message:"Family Member has been updated"}
+const onDel = {message:"Entry has been Deleted"};
 
 
 exports.primaryGetAll = (req,res)=>{
@@ -26,20 +27,17 @@ exports.primaryPost = (req,res)=>{
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const ea = req.body.ea;
     const mh = req.body.mh;
     const typeOfRelationship = req.body.rwto;
     const relationshipID = req.query.id;
-
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
-    }
+    const tuborcolosis = req.body.tuborcolosis;
+    const malnutrision = req.body.malnutrision;
+    const pregnant = req.body.pregnant;
+    const remarks = req.body.remarks;
 
 
     model.create({
@@ -52,7 +50,11 @@ exports.primaryPost = (req,res)=>{
         ea:ea,
         mh:mh,
         typeOfRelationship:typeOfRelationship,
-        mainProfileId:relationshipID
+        mainProfileId:relationshipID,
+        tuborcolosis:tuborcolosis,
+        malnutrision:malnutrision,
+        pregnant:pregnant,
+        remarks:remarks
     })
     .then(result =>{
         res.json(onCreate)
@@ -72,6 +74,10 @@ exports.updatePrimary = (req,res) => {
     const mh = req.body.mh;
     const typeOfRelationship = req.body.typeOfRelationship;
     const id = req.query.id
+    const tuborcolosis = req.body.tuborcolosis;
+    const malnutrision = req.body.malnutrision;
+    const pregnant = req.body.pregnant;
+    const remarks = req.body.remarks;
 
 
     model.update({
@@ -83,7 +89,11 @@ exports.updatePrimary = (req,res) => {
         soi:soi,
         ea:ea,
         mh:mh,
-        typeOfRelationship:typeOfRelationship
+        typeOfRelationship:typeOfRelationship,
+        tuborcolosis:tuborcolosis,
+        malnutrision:malnutrision,
+        pregnant:pregnant,
+        remarks:remarks
     },{
         where:{
             id: id
@@ -95,3 +105,16 @@ exports.updatePrimary = (req,res) => {
     })
 }
 
+exports.deletePrimary = (req,res) => {
+    const id = req.query.id
+
+    model.destroy({
+        where:{
+            id:id
+        }
+    }).then(result =>{
+        res.json(onDel)
+    }).catch(err=>{
+        res.json(onErr)
+    })
+}

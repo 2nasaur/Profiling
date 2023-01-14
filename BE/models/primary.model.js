@@ -63,6 +63,10 @@ const primary = sequelize.define('mainProfile',{
     pregnant:{
         type: Sequelize.STRING,
         allowNull: true
+    },
+    remarks:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 
 });
