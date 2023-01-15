@@ -199,7 +199,7 @@ const tb = await tuborcolosis + tuborcolosis1
 const tm = await Male + Male1
 const fm = await Female + Female1
 
-const dashBoard = await {"TotalPopulation":totalPopulation,"TotalFamily":totalFam,"TotalQualified":totalQualified,"TotalMale":tm,"TotalFemale":fm,"TotalTuborcolosis":tb,"TotalMalnorished":totalMalnutrision,"TotalPregnant":totaPregnant,"FamilyYr":yrtotalFam,"tbyr":tyrtb,"MaleYr":yrtotalMale,"FemaleYr":yrtotalFemale,"4psYr":yrtotal4ps,"PregnantYr":yrtotalPreg};
+const dashBoard = await {"TotalPopulation":totalPopulation,"TotalFamily":totalFam,"TotalQualified":totalQualified,"TotalMale":tm,"TotalFemale":fm,"TotalTuborcolosis":tb,"TotalMalnorished":totalMalnutrision,"TotalPregnant":totaPregnant,"FamilyYr":yrtotalFam,"tbyr":tyrtb,"MaleYr":yrtotalMale,"FemaleYr":yrtotalFemale,"QualifiedYr":yrtotal4ps,"PregnantYr":yrtotalPreg};
 
 console.log(yr)
 await res.json(dashBoard);
