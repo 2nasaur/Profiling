@@ -20,10 +20,11 @@ export class UpdateProfileComponent implements OnInit {
   soi:any;
   ea:any;
   typeofhousehold:any;
-  pregnancy:any;
+  pregnant:any;
   mh:any;
   malnutrision:any;
   tuborcolosis:any;
+  remarks:any
 
   constructor(private userService: UserService, private router: Router, private authService: AuthService, private dialogRef: MatDialogRef<UpdateProfileComponent>) { }
 
@@ -39,7 +40,7 @@ export class UpdateProfileComponent implements OnInit {
         alert(data.message);
         // console.log('hey')
       }else{
-        // console.log(data.firstName)
+        // console.log(data.sex)
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.address = data.address;
@@ -49,12 +50,12 @@ export class UpdateProfileComponent implements OnInit {
         this.soi = data.soi;
         this.ea = data.ea;
         this.typeofhousehold = data.typeofhousehold;
-        this.pregnancy = data.pregnancy;
+        this.pregnant = data.pregnant;
         this.mh = data.mh;
         this.malnutrision = data.malnutrision
         this.userService.id = data.id
         this.tuborcolosis = data.tuborcolosis
-        console.log(data.id)
+        console.log(this.sex)
       }
     });
   }

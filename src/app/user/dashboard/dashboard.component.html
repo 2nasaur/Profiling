@@ -3,54 +3,69 @@
     <mat-card class="card">
         <mat-card-header>
           <mat-card-title>Total Family</mat-card-title>
-          <mat-card-subtitle><mat-icon>people</mat-icon>100</mat-card-subtitle>
+          <mat-card-subtitle><mat-icon>people</mat-icon>{{total}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <hr>
-          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+          <button mat-button (click)='updateTotal()'><mat-icon>update</mat-icon>UPDATE</button>
         </mat-card-actions>
       </mat-card>
 
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title>Number of 4'ps Qualified</mat-card-title>
-          <mat-card-subtitle><mat-icon>verified_user</mat-icon>62</mat-card-subtitle>
+          <mat-card-subtitle><mat-icon>verified_user</mat-icon>{{qualified}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <hr>
-          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+          <button mat-button (click)='updateQualified()'><mat-icon>update</mat-icon>UPDATE</button>
         </mat-card-actions>
       </mat-card>
 
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title>Malnutrision Cases</mat-card-title>
-          <mat-card-subtitle><mat-icon>sentiment_very_dissatisfied</mat-icon>38</mat-card-subtitle>
+          <mat-card-subtitle><mat-icon>sentiment_very_dissatisfied</mat-icon>{{malnutrision}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <hr>
-          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+          <button mat-button (click)='updateMalnorished()'><mat-icon>update</mat-icon>UPDATE</button>
         </mat-card-actions>
       </mat-card>
 
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title>Number of Pregnants</mat-card-title>
-          <mat-card-subtitle><mat-icon>pregnant_woman</mat-icon>100</mat-card-subtitle>
+          <mat-card-subtitle><mat-icon>pregnant_woman</mat-icon>{{pregnant}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <hr>
-          <button mat-button><mat-icon>update</mat-icon>UPDATE</button>
+          <button mat-button (click)='updatePregnant()'><mat-icon>update</mat-icon>UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Tuborcolosis Cases</mat-card-title>
+          <mat-card-subtitle><mat-icon>face</mat-icon>{{tuborcolosis}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <hr>
+          <button mat-button (click)='updateTuborcolosis()'><mat-icon>update</mat-icon>UPDATE</button>
         </mat-card-actions>
       </mat-card>
 </div>
 <!-- </div> -->
 
-<div>
+<mat-spinner
+  id="spinnerdiv" *ngIf="divlinechart === undefined && divbarchart === undefined && divbarchart2 === undefined && divbarchart3 === undefined && divbarchart4 === undefined && divbarchart5 === undefined; else elseBlock">
+</mat-spinner>
+  <ng-template #elseBlock>
   <mat-card class="lineChart">
     <canvas baseChart width="200" height="50" type="line" [data]="lineChartData"></canvas>
   </mat-card>
-</div>
+
+
 
 <div class="row2">
   <mat-card class="barChart">
@@ -72,4 +87,12 @@
         <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
         <canvas baseChart width="200" height="100" type="bar" [data]="barChartData4"></canvas>
         </mat-card>
+
+
+        <mat-card class="barChart">
+          <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+          <canvas baseChart width="200" height="100" type="bar" [data]="barChartData5"></canvas>
+          </mat-card>
+      
 </div>
+</ng-template>

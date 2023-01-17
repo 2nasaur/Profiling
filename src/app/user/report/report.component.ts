@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import * as XLSX from 'xlsx';
 import { UserService } from '../user.service';
 import { DatePipe } from '@angular/common';
+import { last } from 'rxjs';
 
 @Component({
   selector: 'app-report',
@@ -42,7 +43,11 @@ export class ReportComponent implements OnInit {
      'lastName',
      'address',
      'civilStatus',
-     'status'
+     'pregnant',
+     'tuborcolosis',
+     'malnutrision',
+     'status',
+     'remarks'
     ];
 
     fileName= 'ExcelSheet.xlsx';
@@ -114,6 +119,8 @@ export class ReportComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.toggleFilter()
+    this.toggleFilter()
   }
 
   toggleFilter(){
@@ -159,9 +166,9 @@ export class ReportComponent implements OnInit {
     let dobformat2 = this.pipe.transform(this.endDate, 'yyyy-MM-dd');
     value.startDate = dobformat
     value.endDate = dobformat2
-    console.log(value.startDate, value.endDate);
+    console.log(this.firstName, this.lastName);
 
-        this.userService.viewReports(this.authService.jwttoken, value.startDate, value.endDate, this.pageIndex, this.pageSize, value.firstName, value.lastName, value.sex)
+        this.userService.viewReports(this.authService.jwttoken, value.startDate, value.endDate, this.pageIndex, this.pageSize, this.firstName, this.lastName, this.sex)
         .subscribe(
         data=>{
           // let dobformat = this.pipe.transform(value.birthday, 'yyyy-MM-dd');

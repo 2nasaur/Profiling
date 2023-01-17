@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { UserService } from '../user.service';
 import {MatDialog} from '@angular/material/dialog'
 import { CreateFamilyProfileComponent } from '../create-family-profile/create-family-profile.component';
+import { ViewSubProfileComponent } from '../view-sub-profile/view-sub-profile.component';
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 import { Router } from '@angular/router';
 
@@ -26,6 +27,8 @@ export class ViewProfileComponent implements OnInit {
   mh:any;
   malnutrision:any;
   tuborcolosis:any;
+
+  isReadOnly:boolean=true
 
   constructor(private userService: UserService, private authService: AuthService, public dialog: MatDialog, private router: Router) { }
 
@@ -51,7 +54,7 @@ export class ViewProfileComponent implements OnInit {
         this.soi = data.soi;
         this.ea = data.ea;
         this.typeofhousehold = data.typeofhousehold;
-        this.pregnancy = data.pregnancy;
+        this.pregnancy = data.pregnant;
         this.mh = data.mh;
         this.malnutrision = data.malnutrision;
         this.tuborcolosis = data.tuborcolosis;
@@ -63,6 +66,19 @@ export class ViewProfileComponent implements OnInit {
     let dialogRef = this.dialog.open(CreateFamilyProfileComponent, {
       width: '60%',
       minWidth: '320px',
+      maxHeight: '500px'
+      // data: { 
+      //   // first_name: this.singleData.first_name, 
+      //   // middle_name: this.singleData.middle_name,
+      //   // last_name: this.singleData.last_name 
+      // },
+    });
+  }
+
+  viewfamily(){
+    let dialogRef = this.dialog.open(ViewSubProfileComponent, {
+      width: '60%',
+      minWidth: '250px',
       maxHeight: '500px'
       // data: { 
       //   // first_name: this.singleData.first_name, 

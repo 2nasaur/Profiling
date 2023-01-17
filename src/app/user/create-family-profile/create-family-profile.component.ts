@@ -20,9 +20,11 @@ export class CreateFamilyProfileComponent implements OnInit {
   soi:any;
   ea:any;
   typeofhousehold:any;
-  pregnancy:any;
+  pregnant:any;
   mh:any;
-  rwto:any;
+  malnutrision:any;
+  tuborcolosis:any;
+  typeOfRelationship:any;
 
   constructor(private dialogRef: MatDialogRef<CreateFamilyProfileComponent>, private userService: UserService, private authService: AuthService, private router: Router) { }
 
@@ -31,10 +33,10 @@ export class CreateFamilyProfileComponent implements OnInit {
 
   submit(value: any){
 
-    value.familyID = localStorage.getItem('familyID');
+    // value.id = localStorage.getItem('id');
     // value.agencyStatus = this.agencyStatus;
     // value.radius = this.radius;
-    this.userService.addSecondaryProfile(value,this.authService.jwttoken).subscribe(data=>{
+    this.userService.addSecondaryProfile(value,this.authService.jwttoken, localStorage.getItem('id')).subscribe(data=>{
       if(data.result == 'failure'){
         alert(data.message);
       }else{

@@ -1,0 +1,48 @@
+/* .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .try {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+  } */
+
+  div.label{
+    justify-content: left;
+    text-align: left;
+    width:250px;
+}
+
+div#controls{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;    
+}
+
+div#controls button{
+    margin-right:10px;
+}
+
+button#add{
+     right:50px;
+}
+
+.mat-list-item{
+  margin: 20px;
+}
+
+div{
+  max-height: auto;
+  /* width: 500px; */
+}
+
+.mat-dialog-container {
+  max-height: 500px;
+}

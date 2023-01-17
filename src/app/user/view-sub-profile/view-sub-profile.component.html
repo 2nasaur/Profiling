@@ -1,0 +1,18 @@
+<h2>Family Members Details</h2>
+
+<mat-list>
+    <mat-list-item id="subprof" *ngFor="let multiple of multiples"><div fxFlex='40' class='label'> Name: </div> {{multiple.firstName}} {{multiple.lastName}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Civil Status: </div> {{multiple.civilStatus}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Malnutrision: </div> {{multiple.malnutrision}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Tuborcolosis: </div> {{multiple.tuborcolosis}}<div fxFlex="60%" class='div-values'></div>
+        <div id='controls'>
+        <button mat-raised-button color='primary' type='button' (click)="editSub()">Edit</button>
+        <!-- <button mat-raised-button color='warn' type='button'>Delete</button> -->
+        </div> 
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div id='controls'>
+      <!-- <button mat-raised-button type='button' (click)="viewfamily()"><mat-icon>collections</mat-icon> View Family Member </button> 
+      <button mat-raised-button type='button' (click)="addfamily()"><mat-icon>person_add</mat-icon> Add Family Member </button> 
+      <button mat-raised-button color='primary' (click)="update()"><mat-icon>edit</mat-icon> Update Profile </button>  -->
+      <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>
+  </div>
+</mat-list>

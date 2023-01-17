@@ -50,6 +50,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
 import { CreateFamilyProfileComponent } from './create-family-profile/create-family-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ViewSubProfileComponent } from './view-sub-profile/view-sub-profile.component';
+import { UpdateSubProfileComponent } from './update-sub-profile/update-sub-profile.component';
 
 
 
@@ -68,6 +70,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     CreateFamilyProfileComponent,
     ViewProfileComponent,
     UpdateProfileComponent,
+    ViewSubProfileComponent,
+    UpdateSubProfileComponent,
   
 
 

@@ -6,8 +6,8 @@
 <mat-form-field class="dateFormField" appearance="outline">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate [(ngModel)]="startDate" placeholder="Start date">
-      <input matEndDate [(ngModel)]="endDate" placeholder="End date">
+      <input matStartDate [(ngModel)]="startDate" required placeholder="Start date">
+      <input matEndDate [(ngModel)]="endDate" required placeholder="End date">
     </mat-date-range-input>
     <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -25,11 +25,11 @@
       </div>
       <mat-list-item>
           <mat-form-field class="input-fields" appearance="outline">
-              <input matInput name='firstName' [(ngModel)]='firstName' pattern="^[a-zA-Z ]+$" placeholder="First Name">
+              <input matInput name='firstName' [(ngModel)]='firstName' pattern="^[a-zA-Z ]+$" value="firstName" placeholder="First Name">
               <mat-error></mat-error>
           </mat-form-field>
           <mat-form-field class="input-fields" appearance="outline">
-              <input matInput name='lastName' [(ngModel)]='lastName' pattern="^[a-zA-Z ]+$" placeholder="Last Name">
+              <input matInput name='lastName' [(ngModel)]='lastName' pattern="^[a-zA-Z ]+$" value="lastName" placeholder="Last Name">
               <mat-error></mat-error>
           </mat-form-field>
       </mat-list-item>
@@ -93,10 +93,34 @@
             <td mat-cell *matCellDef="let element"> {{element.civilStatus}} </td>
           </ng-container>
 
-          <!-- Status Column -->
+        <!-- Status Column -->
+        <ng-container matColumnDef="pregnant">
+          <th mat-header-cell *matHeaderCellDef> Pregnant </th>
+          <td mat-cell *matCellDef="let element"> {{element.pregnant}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="tuborcolosis">
+          <th mat-header-cell *matHeaderCellDef> Tuborcolosis </th>
+          <td mat-cell *matCellDef="let element"> {{element.tuborcolosis}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="malnutrision">
+          <th mat-header-cell *matHeaderCellDef> Malnutrision </th>
+          <td mat-cell *matCellDef="let element"> {{element.malnutrision}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> Status </th>
           <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="remarks">
+          <th mat-header-cell *matHeaderCellDef> Remarks </th>
+          <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -36,7 +36,7 @@ export class LoginPageComponent implements OnInit {
       
     } 
     else{
-      alert('Incorrect password');
+      alert('Incorrect credentials');
     }
   
   }

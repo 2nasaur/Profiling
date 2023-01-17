@@ -21,7 +21,7 @@ export class CreateProfileComponent implements OnInit {
   soi:any;
   ea:any;
   typeofhousehold:any;
-  pregnancy:any;
+  pregnant:any;
   mh:any;
   malnutrision:any;
   tuborcolosis:any;

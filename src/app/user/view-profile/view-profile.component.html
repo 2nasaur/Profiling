@@ -33,7 +33,7 @@
 
                     <mat-form-field >
                         <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
-                        <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold">
+                        <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [disabled]="isReadOnly" [(value)]="typeofhousehold">
                           <mat-option>None</mat-option>
                           <mat-option value="dueling">Dueling</mat-option>
                           <mat-option value="concrete">Concrete</mat-option>
@@ -46,11 +46,11 @@
                 <mat-list-item><div fxFlex='40' class='label'>Education Attainment:</div> <div fxFlex="60%" class='div-values'>{{ea}}</div></mat-list-item>
                 <mat-divider></mat-divider>
                 
-                <mat-list-item  *ngIf="sex === ''"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
+                <mat-list-item  *ngIf="sex === 'Female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
 
                     <mat-form-field >
                         <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
-                        <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy">
+                        <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [disabled]="isReadOnly" [(value)]="pregnancy">
                           <mat-option value="yes">Yes</mat-option>
                           <mat-option value="no">No</mat-option>
                         </mat-select>
@@ -64,7 +64,7 @@
 
                     <mat-form-field >
                         <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
-                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision">
+                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [disabled]="isReadOnly" [(value)]="malnutrision">
                           <mat-option value="yes">Yes</mat-option>
                           <mat-option value="no">No</mat-option>
                         </mat-select>
@@ -77,7 +77,7 @@
 
                     <mat-form-field >
                         <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
-                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis">
+                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [disabled]="isReadOnly" [(value)]="tuborcolosis">
                           <mat-option value="yes">Yes</mat-option>
                           <mat-option value="no">No</mat-option>
                         </mat-select>
@@ -86,6 +86,7 @@
                 <br>
                 <br>
                 <div id='controls'>
+                  <button mat-raised-button type='button' (click)="viewfamily()"><mat-icon>collections</mat-icon> View Family Member </button> 
                   <button mat-raised-button type='button' (click)="addfamily()"><mat-icon>person_add</mat-icon> Add Family Member </button> 
                   <button mat-raised-button color='primary' (click)="update()"><mat-icon>edit</mat-icon> Update Profile </button> 
                   <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>

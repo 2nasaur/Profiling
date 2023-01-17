@@ -24,7 +24,7 @@
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list-item><div fxFlex='40' class='label'>Contact Number: </div><div fxFlex="60%" class='div-values'>
                     <mat-form-field>
-                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$">
+                        <input matInput type="number" name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$">
                         <mat-error></mat-error>
                     </mat-form-field>
             </div></mat-list-item>
@@ -36,8 +36,8 @@
                 <mat-form-field >
                     <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
                     <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex">
-                      <mat-option value="male">Male</mat-option>
-                      <mat-option value="female">Female</mat-option>
+                      <mat-option value="Male">Male</mat-option>
+                      <mat-option value="Female">Female</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div></mat-list-item>
@@ -68,11 +68,11 @@
         </div></mat-list-item>
         <!-- <mat-divider></mat-divider> -->
 
-        <mat-list-item  *ngIf="sex === 'female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
+        <mat-list-item  *ngIf="sex === 'Female'"><div fxFlex='40' class='label'>Pregnant:</div> <div fxFlex="60%" class='div-values'>
 
             <mat-form-field >
                 <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
-                <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy">
+                <mat-select fxFlex="60%" name="pregnant" [(ngModel)]='pregnant' [(value)]="pregnant">
                   <mat-option value="yes">Yes</mat-option>
                   <mat-option value="no">No</mat-option>
                 </mat-select>
@@ -87,9 +87,31 @@
         </div></mat-list-item>
         <!-- <mat-divider></mat-divider> -->
 
+        <mat-list-item><div fxFlex='40' class='label'>Malnutrision Case:</div> <div fxFlex="60%" class='div-values'>
+
+            <mat-form-field >
+                <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' required [(value)]="malnutrision">
+                  <mat-option value="yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div></mat-list-item>
+
+            <mat-list-item><div fxFlex='40' class='label'>Tuborcolosis Case:</div> <div fxFlex="60%" class='div-values'>
+
+                <mat-form-field >
+                    <!-- <mat-label fxFlex='40'>Select Category</mat-label> -->
+                    <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' required [(value)]="tuborcolosis">
+                      <mat-option value="yes">Yes</mat-option>
+                      <mat-option value="no">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div></mat-list-item>
+
         <mat-list-item><div fxFlex='40' class='label'>Relationship with the owner: </div><div fxFlex="60%" class='div-values'>
             <mat-form-field>
-                <input matInput name='rwto' [(ngModel)]='rwto' required>
+                <input matInput name='typeOfRelationship' [(ngModel)]='typeOfRelationship' required>
                 <mat-error></mat-error>
             </mat-form-field>
     </div></mat-list-item>

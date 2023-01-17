@@ -64,15 +64,15 @@
                   <div class="row">
                     <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
-                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$" placeholder="Contact Number">
+                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$" required placeholder="Contact Number">
                         <mat-error></mat-error>
                     </mat-form-field>
                 </mat-list-item>
                     <mat-list-item>
                         <mat-form-field class="input-fields" appearance="outline">
-                            <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex" placeholder="Sex">
-                                <mat-option value="male">Male</mat-option>
-                                <mat-option value="female">Female</mat-option>
+                            <mat-select fxFlex="60%" name="sex" [(ngModel)]='sex' [(value)]="sex" required placeholder="Sex">
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
                               </mat-select>
                         </mat-form-field>
                     </mat-list-item>
@@ -140,7 +140,7 @@
                     </mat-list-item>
                     <mat-list-item>
                         <mat-form-field class="input-fields" appearance="outline">
-                            <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold" placeholder="Type of Household">
+                            <mat-select fxFlex="60%" name="typeofhousehold" [(ngModel)]='typeofhousehold' [(value)]="typeofhousehold" required placeholder="Type of Household">
                                 <mat-option>None</mat-option>
                                 <mat-option value="dueling">Dueling</mat-option>
                                 <mat-option value="concrete">Concrete</mat-option>
@@ -193,7 +193,7 @@
 
                 <div class="row">
                     <div class="column1">Medical History</div>
-                    <div class="column1" *ngIf="sex === 'female'">Pregancy</div>
+                    <div class="column1" *ngIf="sex === 'Female'">Pregancy</div>
                   </div>
 
                   <div class="row">
@@ -203,9 +203,9 @@
                             <mat-error></mat-error>
                         </mat-form-field>
                     </mat-list-item>
-                    <mat-list-item *ngIf="sex === 'female'">
+                    <mat-list-item *ngIf="sex === 'Female'">
                         <mat-form-field class="input-fields" appearance="outline">
-                            <mat-select fxFlex="60%" name="pregnancy" [(ngModel)]='pregnancy' [(value)]="pregnancy" placeholder="Pregnancy">
+                            <mat-select fxFlex="60%" name="pregnant" [(ngModel)]='pregnant' [(value)]="pregnant" required placeholder="Pregnancy">
                                 <mat-option value="yes">Yes</mat-option>
                                 <mat-option value="no">No</mat-option>
                               </mat-select>
@@ -218,7 +218,7 @@
                 </div>
                 <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
-                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision" placeholder="Malnutrision">
+                        <mat-select fxFlex="60%" name="malnutrision" [(ngModel)]='malnutrision' [(value)]="malnutrision" required placeholder="Malnutrision">
                             <mat-option value="yes">Yes</mat-option>
                             <mat-option value="no">No</mat-option>
                           </mat-select>
@@ -230,7 +230,7 @@
                 </div>
                 <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
-                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis" placeholder="Tuborcolosis">
+                        <mat-select fxFlex="60%" name="tuborcolosis" [(ngModel)]='tuborcolosis' [(value)]="tuborcolosis" required placeholder="Tuborcolosis">
                             <mat-option value="yes">Yes</mat-option>
                             <mat-option value="no">No</mat-option>
                           </mat-select>

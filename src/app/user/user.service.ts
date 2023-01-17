@@ -18,6 +18,7 @@ export class UserService {
     allProfileUrl = environment.apiUrl + '/allPrimary';
     secondaryProfileUrl = environment.apiUrl + '/secondary';
     viewReportUrl = environment.apiUrl + '/search';
+    getDashboardUrl = environment.apiUrl + '/dashboard';
 
 
   constructor(private http:HttpClient) { }
@@ -42,15 +43,42 @@ export class UserService {
     );
   }
 
-  addSecondaryProfile(secondarydata: any, jwtToken: any): Observable<any> {
-    const options = { headers: new HttpHeaders({'Content-Type':  'application/json', Authorization: jwtToken})};
-    return this.http
-      .post<any>(this.secondaryProfileUrl, secondarydata, options)
-      .pipe(
-        map(data => data),
-        retry(3),
-        catchError(this.handleError)
-      );
+  addSecondaryProfile(secondarydata: any, jwt: any, id:any): Observable<any> {
+    let body = secondarydata;
+    let options = {headers:new HttpHeaders({Authorization:jwt}),params: new HttpParams().set('id',id)}
+    return this.http.post<any>(this.secondaryProfileUrl, body,options).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  updateSecondaryProfile(secondarydata: any, jwt: any, id:any): Observable<any> {
+    let body = secondarydata;
+    let options = {headers:new HttpHeaders({Authorization:jwt}),params: new HttpParams().set('id',id)}
+    return this.http.patch<any>(this.secondaryProfileUrl, body,options).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  // addSecondaryProfile(secondarydata: any, jwtToken: any, id:any): Observable<any> {
+  //   const options = { headers: new HttpHeaders({'Content-Type':  'application/json', Authorization: jwtToken}).set('id',id)};
+  //   return this.http
+  //     .post<any>(this.secondaryProfileUrl, secondarydata, options)
+  //     .pipe(
+  //       map(data => data),
+  //       retry(3),
+  //       catchError(this.handleError)
+  //     );
+  // }
+
+  viewSubProfile(jwt: any,profileID: any):Observable<any>{
+    let options = { headers : new HttpHeaders({'Content-Type':'application/json'}),params: new HttpParams().set('id',profileID)}
+    return this.http.get<any>(this.secondaryProfileUrl,options).pipe(
+      map(data=>data),
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   viewAllProfile(jwt: any,page:any,pageSize:any, search:any){
@@ -102,6 +130,15 @@ export class UserService {
       .set('search', search)
     };
     return this.http.get<any>(this.allProfileUrl,options).pipe(
+      map(data=>data),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  getDashboard(jwt: any):Observable<any>{
+    let options = { headers : new HttpHeaders({'Content-Type':'application/json'}),params: new HttpParams()}
+    return this.http.get<any>(this.getDashboardUrl,options).pipe(
       map(data=>data),
       retry(3),
       catchError(this.handleError)
