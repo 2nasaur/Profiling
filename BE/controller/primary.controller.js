@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const secondary = require('../models/secondary.model');
 const onDel = {message:"Entry has been Deleted"};
 const onErr = {message:"Error, Try Again"};
+const onExist = {message:"Already Exist"}
 
 exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
@@ -286,11 +287,11 @@ exports.primaryGetById = (req,res)=>{
     })
 }
 
-exports.primaryPost = (req,res)=>{
+exports.primaryPost = async(req,res)=>{
 
     
 
-
+    
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const address = req.body.address;
@@ -305,8 +306,8 @@ exports.primaryPost = (req,res)=>{
     const malnutrision = req.body.malnutrision;
     const pregnant = req.body.pregnant;
     const remarks = req.body.remarks;
+    const checkDup = await model.findOne({ where: { firstName:firstName,lastName:lastName } });
     
-
     let status
     if(soi <= 5000){
         status = "Qualified"
@@ -314,8 +315,11 @@ exports.primaryPost = (req,res)=>{
         status = "Not Qualified"
     }
 
-
-    model.create({
+    if(checkDup){
+        res.json(onExist)
+    }
+    else{
+        model.create({
         firstName:firstName,
         lastName:lastName,
         address:address,
@@ -336,7 +340,8 @@ exports.primaryPost = (req,res)=>{
         res.json(onCreate)
     }).catch(err =>{
         console.log(err)
-    })
+    })}
+
 };
 
 exports.updatePrimary = (req,res) => {
@@ -344,7 +349,7 @@ exports.updatePrimary = (req,res) => {
     const lastName = req.body.lastName;
     const address = req.body.address;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const typeofhousehold = req.body.typeofhousehold;
@@ -361,12 +366,6 @@ exports.updatePrimary = (req,res) => {
         status = "Qualified"
     }else{
         status = "Not Qualified"
-    }
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
     }
 
 
