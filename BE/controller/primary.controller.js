@@ -11,7 +11,8 @@ exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
     const size = req.query.size
     const pageNo = (page-1)
-    const size1 = parseInt(size)
+    const size2 = parseInt(size)
+    const size1 = parseInt(size2)
     const params1 = req.query.search
     const Op = Sequelize.Op;
 
@@ -24,7 +25,7 @@ exports.primaryGetAll = (req,res)=>{
     if (params == true)
         model.findAll({
             limit: size1,
-            offset: pageNo
+            offset: pageNo * size1
         })
         .then(results =>{
             res.json(results)
@@ -54,7 +55,9 @@ exports.primaryGetAll = (req,res)=>{
                         }
                     },
                     {
-                        status:params1
+                        status:{
+                            [Op.like]:`%${params1}%`
+                        }
                         }
                     
                 ]
