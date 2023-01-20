@@ -118,8 +118,6 @@ exports.searchFilter = (req,res)=>{
     //all are true
     if(sex == true & firstName == true & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 [Op.or]:[{sex:sex1},{firstName:firstName1},{lastName:lastName1}],
                 createdAt:{
@@ -140,8 +138,6 @@ exports.searchFilter = (req,res)=>{
     //only sex is true
  else if(sex==true & firstName==false & lastName==false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 sex:sex1,
                 createdAt:{
@@ -159,8 +155,6 @@ exports.searchFilter = (req,res)=>{
     //only fname is true
     else if(firstName==true & sex==false & lastName==false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 firstName:firstName1,
                 createdAt:{
@@ -178,8 +172,6 @@ exports.searchFilter = (req,res)=>{
     //only last name is true
     else if(sex == false & firstName == false & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 lastName:lastName1,
                 createdAt:{
@@ -197,8 +189,6 @@ exports.searchFilter = (req,res)=>{
     //sex & fname true
     else if(sex == true & firstName == true & lastName == false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 [Op.and]:[{sex:sex1},{firstName:firstName1}],
                 createdAt:{
@@ -216,8 +206,6 @@ exports.searchFilter = (req,res)=>{
     //sex & last name true
     else if(sex == true & firstName == false & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 [Op.and]:[{sex:sex1},{lastName:lastName1}],
                 createdAt:{
@@ -235,8 +223,6 @@ exports.searchFilter = (req,res)=>{
     //fname and lname true
     else if(sex == false & firstName == true & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 [Op.and]:[{firstName:firstName1},{lastName:lastName1}],
                 createdAt:{
@@ -254,8 +240,6 @@ exports.searchFilter = (req,res)=>{
 
     else{
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 createdAt:{
                     [Op.between]:[start,end],
