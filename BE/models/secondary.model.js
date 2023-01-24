@@ -17,7 +17,7 @@ const secondary = sequelize.define('subProfile',{
         allowNull: false
     },
     contact:{
-        type: Sequelize.INTEGER(12) ,
+        type: Sequelize.STRING ,
         allowNull: true
     },
     sex:{
