@@ -60,9 +60,16 @@
 <mat-spinner
   id="spinnerdiv" *ngIf="divlinechart === undefined && divbarchart === undefined && divbarchart2 === undefined && divbarchart3 === undefined && divbarchart4 === undefined && divbarchart5 === undefined; else elseBlock">
 </mat-spinner>
+
   <ng-template #elseBlock>
+    <!-- <div class="button">
+      <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+        <mat-icon>download</mat-icon>
+      </button>
+    </div> -->
+    
   <mat-card class="lineChart">
-    <canvas baseChart width="200" height="50" type="line" [data]="lineChartData"></canvas>
+    <canvas baseChart width="200" height="50" type="line" [data]="lineChartData" (click)="downloadLine()"></canvas>
   </mat-card>
 
 
@@ -70,29 +77,34 @@
 <div class="row2">
   <mat-card class="barChart">
   <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
-  <canvas baseChart width="200" height="100" type="bar" [data]="barChartData"></canvas>
+  <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar()" [data]="barChartData"></canvas>
   </mat-card>
 
   <mat-card class="barChart">
     <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
-    <canvas baseChart width="200" height="100" type="bar" [data]="barChartData2"></canvas>
+    <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar2()"  [data]="barChartData2"></canvas>
     </mat-card>
 
     <mat-card class="barChart">
       <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
-      <canvas baseChart width="200" height="100" type="bar" [data]="barChartData3"></canvas>
+      <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar3()"  [data]="barChartData3"></canvas>
       </mat-card>
 
       <mat-card class="barChart">
         <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
-        <canvas baseChart width="200" height="100" type="bar" [data]="barChartData4"></canvas>
+        <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar4()"  [data]="barChartData4"></canvas>
         </mat-card>
 
 
         <mat-card class="barChart">
           <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
-          <canvas baseChart width="200" height="100" type="bar" [data]="barChartData5"></canvas>
+          <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar5()"  [data]="barChartData5"></canvas>
           </mat-card>
+
+          <mat-card class="barChart">
+            <!-- <canvas baseChart width="100" height="10" type="pie" [data]="pieChartData" [options]="pieChartOption"></canvas> -->
+            <canvas baseChart width="200" height="100" type="bar" (click)="downloadBar6()"  [data]="barChartData6"></canvas>
+            </mat-card>
       
 </div>
 </ng-template>

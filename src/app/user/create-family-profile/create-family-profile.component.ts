@@ -36,6 +36,7 @@ export class CreateFamilyProfileComponent implements OnInit {
     // value.id = localStorage.getItem('id');
     // value.agencyStatus = this.agencyStatus;
     // value.radius = this.radius;
+    value.remarks = null
     this.userService.addSecondaryProfile(value,this.authService.jwttoken, localStorage.getItem('id')).subscribe(data=>{
       if(data.result == 'failure'){
         alert(data.message);

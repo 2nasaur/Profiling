@@ -55,6 +55,7 @@ export class UpdateProfileComponent implements OnInit {
         this.malnutrision = data.malnutrision
         this.userService.id = data.id
         this.tuborcolosis = data.tuborcolosis
+        this.remarks = data.remarks
         console.log(this.sex)
       }
     });

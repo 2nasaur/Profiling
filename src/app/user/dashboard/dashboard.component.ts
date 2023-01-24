@@ -3,6 +3,7 @@ import { MatMultiYearView } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { UserService } from '../user.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,8 @@ export class DashboardComponent implements OnInit {
   pregnant:any
   tuborcolosis:any
 
+  fileName= 'graph.xlsx';
+
 
   divlinechart:any
 
@@ -25,6 +28,7 @@ export class DashboardComponent implements OnInit {
   divbarchart3:any
   divbarchart4:any
   divbarchart5:any
+  divbarchart6:any
 
 
   lineChartData = {
@@ -134,6 +138,19 @@ export class DashboardComponent implements OnInit {
     ]
   }
 
+  barChartData6 = {
+    labels: ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    datasets:[
+      {
+        data: [],
+        label: 'Malnutrision Cases',
+        fill: true,
+        // backgroundColor: 'rgba(255, 255, 0, 0.3',
+        // borderColor: 'black'
+      }
+    ]
+  }
+
   constructor(private router: Router, private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -165,7 +182,11 @@ export class DashboardComponent implements OnInit {
       this.divbarchart4 = data.PregnantYr
 
       this.barChartData5.datasets[0].data = data.tbyr
-      this.divbarchart5 = data.PregnantYr
+      this.divbarchart5 = data.tbyr
+      console.log(data.tbyr)
+
+      this.barChartData6.datasets[0].data = data.MalnutrisionYr
+      this.divbarchart6 = data.MalnutrisionYr
 
       console.log(this.divlinechart)
       // console.log(this.barChartData2.datasets[0].data)
@@ -223,5 +244,195 @@ export class DashboardComponent implements OnInit {
   }
 
   
+  downloadLine(){
+    console.log(this.divlinechart)
+    // The array of numbers that you want to download
+    let element = this.divlinechart
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "FamilyPerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar(){
+    // The array of numbers that you want to download
+    let element = this.divbarchart
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "MalePerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar2(){
+    // The array of numbers that you want to download
+    let element = this.divbarchart2
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "FemalePerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar3(){
+    // The array of numbers that you want to download
+    let element = this.divbarchart3
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "Qualified4psPerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar4(){
+    // The array of numbers that you want to download
+    let element = this.divbarchart4
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "PergnantPerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar5(){
+    // The array of numbers that you want to download
+    console.log(this.divbarchart5)
+    let element = this.divbarchart5
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "TuborcolosisPerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
+
+  downloadBar6(){
+    // The array of numbers that you want to download
+    let element = this.divbarchart6
+
+    // The months that you want to add as the first row
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Create a new workbook
+    let workbook = XLSX.utils.book_new();
+
+    // Create a worksheet and add it to the workbook
+    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
+
+    // Generate the Excel file
+    let excelBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+
+    // Create a Blob from the buffer and create a link to download the file
+    let blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    let link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "MalnutrisionPerYear.xlsx";
+
+    // Download the file
+    link.click();
+  }
 
 }

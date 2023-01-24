@@ -1,18 +1,78 @@
-<h2>Family Members Details</h2>
+<!-- <h2>Family Members Details</h2>
 
 <mat-list>
     <mat-list-item id="subprof" *ngFor="let multiple of multiples"><div fxFlex='40' class='label'> Name: </div> {{multiple.firstName}} {{multiple.lastName}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Civil Status: </div> {{multiple.civilStatus}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Malnutrision: </div> {{multiple.malnutrision}}<div fxFlex="60%" class='div-values'></div><div fxFlex='40' class='label'> Tuborcolosis: </div> {{multiple.tuborcolosis}}<div fxFlex="60%" class='div-values'></div>
         <div id='controls'>
         <button mat-raised-button color='primary' type='button' (click)="editSub()">Edit</button>
-        <!-- <button mat-raised-button color='warn' type='button'>Delete</button> -->
         </div> 
         <mat-divider></mat-divider>
     </mat-list-item>
     <mat-divider></mat-divider>
     <div id='controls'>
-      <!-- <button mat-raised-button type='button' (click)="viewfamily()"><mat-icon>collections</mat-icon> View Family Member </button> 
-      <button mat-raised-button type='button' (click)="addfamily()"><mat-icon>person_add</mat-icon> Add Family Member </button> 
-      <button mat-raised-button color='primary' (click)="update()"><mat-icon>edit</mat-icon> Update Profile </button>  -->
       <button mat-raised-button type='button' (click)='cancel()'>Cancel</button>
   </div>
-</mat-list>
+</mat-list> -->
+
+
+<!-- <mat-spinner *ngIf='(data == undefined); else elseBlock'></mat-spinner> -->
+
+<!-- <ng-template #elseBlock> -->
+  <div>
+    <mat-card class='mat-elevation-z8'>
+    <h2>View Family Member Details</h2><br>
+<!-- <div class="upPage"> -->
+    <!-- <mat-form-field>
+        
+        <mat-label>Search</mat-label>
+        <input matInput #a (keyup)="applyFilter(a)" name='searchbox'>
+        <button mat-icon-button matSuffix ><mat-icon>search</mat-icon></button>  
+        
+    </mat-form-field>
+     -->
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+      
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+          </ng-container>
+
+        <!-- Civil Status Column -->
+        <ng-container matColumnDef="civilStatus">
+            <th mat-header-cell *matHeaderCellDef> Civil Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.civilStatus}} </td>
+          </ng-container>
+
+          <!-- Malnutrision Column -->
+        <ng-container matColumnDef="malnutrision">
+          <th mat-header-cell *matHeaderCellDef> Malnutrion </th>
+          <td mat-cell *matCellDef="let element"> {{element.malnutrision}} </td>
+        </ng-container>
+
+        <!-- Tuborcolosis Column -->
+        <ng-container matColumnDef="tuborcolosis">
+          <th mat-header-cell *matHeaderCellDef> Tuborcolosis </th>
+          <td mat-cell *matCellDef="let element"> {{element.tuborcolosis}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let element" (click)='viewProfile(row)'></tr>
+      </table>
+
+    
+
+    <mat-paginator #pagination length="{{totalNumber}}"
+    pageSize="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPaginateChange($event)">
+    </mat-paginator>
+
+</mat-card>
+</div>

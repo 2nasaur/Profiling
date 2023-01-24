@@ -34,26 +34,28 @@ export class UpdateSubProfileComponent implements OnInit {
   }
 
   getProfile(){
-    console.log(localStorage.getItem('id'))
+    // console.log(localStorage.getItem('id2'))
     this.userService.viewProfile(this.authService.jwttoken, localStorage.getItem('id')).subscribe(data=>{
-      // console.log(data)
+      console.log(data)
       if(data.result == 'failure'){
-        alert(data.message);
-        // console.log('hey')
+        alert(data.message)
+
       }else{
-        console.log(data.subProfiles)
-        this.firstName = data.subProfiles[0].firstName;
-        this.lastName = data.subProfiles[0].lastName;
-        this.contact = data.subProfiles[0].contact;
-        this.sex = data.subProfiles[0].sex;
-        this.civilStatus = data.subProfiles[0].civilStatus;
-        this.soi = data.subProfiles[0].soi;
-        this.ea = data.subProfiles[0].ea;
-        this.pregnant = data.subProfiles[0].pregnant;
-        this.mh = data.subProfiles[0].mh;
-        this.malnutrision = data.subProfiles[0].malnutrision
-        this.tuborcolosis = data.subProfiles[0].tuborcolosis
-        this.remarks = data.subProfiles[0].remarks
+        let retrievedArray = JSON.parse(localStorage.getItem('myArray') || '');
+        console.log(retrievedArray)
+        // console.log(data.subProfiles)
+        this.firstName = retrievedArray.firstName;
+        this.lastName = retrievedArray.lastName;
+        this.contact = retrievedArray.contact;
+        this.sex = retrievedArray.sex;
+        this.civilStatus = retrievedArray.civilStatus;
+        this.soi = retrievedArray.soi;
+        this.ea = retrievedArray.ea;
+        this.pregnant = retrievedArray.pregnant;
+        this.mh = retrievedArray.mh;
+        this.malnutrision = retrievedArray.malnutrision
+        this.tuborcolosis = retrievedArray.tuborcolosis
+        this.remarks = retrievedArray.remarks
 
       }
     });
@@ -61,7 +63,7 @@ export class UpdateSubProfileComponent implements OnInit {
 
   update(value: any) {
 
-    this.userService.updateSecondaryProfile(value, localStorage.getItem('token'), localStorage.getItem('id')).subscribe((data) => { 
+    this.userService.updateSecondaryProfile(value, localStorage.getItem('token'), localStorage.getItem('id2')).subscribe((data) => { 
       if (data.result === 'failure') {
         alert('Something went wrong, please try again');
       } else {

@@ -66,3 +66,13 @@
     top: 25%;
     left: 45%;
   }
+
+  .button{
+    justify-content: flex-end;
+    justify-items: flex-end;
+    width: 100%;
+    /* float:right;
+  width: auto;
+  margin: 5%;
+  color: white; */
+  }

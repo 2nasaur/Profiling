@@ -64,7 +64,7 @@
                   <div class="row">
                     <mat-list-item>
                     <mat-form-field class="input-fields" appearance="outline">
-                        <input matInput name='contact' [(ngModel)]='contact' required pattern="^[#.0-9a-zA-Z ,-]+$" required placeholder="Contact Number">
+                        <input matInput name='contact' [(ngModel)]='contact' required pattern= "^[0-9]{11}" required placeholder="Contact Number">
                         <mat-error></mat-error>
                     </mat-form-field>
                 </mat-list-item>
@@ -78,8 +78,13 @@
                     </mat-list-item>
                     <mat-list-item>
                         <mat-form-field class="input-fields" appearance="outline">
-                            <input matInput name='civilStatus' [(ngModel)]='civilStatus' required placeholder="Civil Status">
-                            <mat-error></mat-error>
+                            <mat-select fxFlex="60%" name="civilStatus" [(ngModel)]='civilStatus' [(value)]="civilStatus" required placeholder="Civil Status">
+                                <mat-option>None</mat-option>
+                                <mat-option value="Single">Single</mat-option>
+                                <mat-option value="Married">Married</mat-option>
+                                <mat-option value="Separated">Separated</mat-option>
+                                <mat-option value="Widowed">Widowed</mat-option>
+                              </mat-select>
                         </mat-form-field>
                     </mat-list-item>
                   </div>
@@ -149,11 +154,15 @@
                         </mat-form-field>
                     </mat-list-item>
                     <mat-list-item>
-                        <mat-form-field class="input-fields" appearance="outline">
-                            <input matInput name='ea' [(ngModel)]='ea' required placeholder="Educational Attainment">
-                            <mat-error></mat-error>
-                        </mat-form-field>
-                    </mat-list-item>
+                    <mat-form-field class="input-fields" appearance="outline">
+                        <mat-select fxFlex="60%" name="ea" [(ngModel)]='ea' [(value)]="ea" required placeholder="Educational Attainment">
+                            <mat-option value="None">None</mat-option>
+                            <mat-option value="Elementary">Elementary</mat-option>
+                            <mat-option value="Highschool">Highschool</mat-option>
+                            <mat-option value="College">College</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </mat-list-item>
                   </div>
 
 

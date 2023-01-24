@@ -33,10 +33,7 @@ export class CreateProfileComponent implements OnInit {
   }
 
   submit(value: any){
-
-    // value.agencyID = localStorage.getItem('agencyID');
-    // value.agencyStatus = this.agencyStatus;
-    // value.radius = this.radius;
+    value.remarks = null
     this.userService.addProfile(value,this.authService.jwttoken).subscribe(data=>{
       if(data.result == 'failure'){
         alert(data.message);
