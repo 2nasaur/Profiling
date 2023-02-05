@@ -47,7 +47,8 @@ export class ReportComponent implements OnInit {
      'tuborcolosis',
      'malnutrision',
      'status',
-     'remarks'
+     'createdAt',
+     'remarks',
     ];
 
     fileName= 'ExcelSheet.xlsx';
@@ -144,20 +145,62 @@ export class ReportComponent implements OnInit {
     // this.female=false;
   }
 
-  exportExcel(): void
-  {
+  // exportExcel(): void {
+  //   /* pass here the table id */
+  //   let element = document.getElementById('excel-table');
+  
+  //   // date range
+  //   let dobformat = this.pipe.transform(this.startDate, 'MM-dd-yyyy');
+  //   let dobformat2 = this.pipe.transform(this.endDate, 'MM-dd-yyyy');
+  //   let startDate = dobformat
+  //   let endDate = dobformat2
+  //   console.log(startDate, endDate)
+  
+  //   const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+  
+  //   /* generate workbook and add the worksheet */
+  //   const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  //   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+  //   /* save to file */  
+  //   XLSX.writeFile(wb, this.fileName);
+  
+  // }
+
+  exportExcel(): void {
     /* pass here the table id */
     let element = document.getElementById('excel-table');
-    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
- 
+  
+    // date range
+    let dobformat = this.pipe.transform(this.startDate, 'MM-dd-yyyy');
+    let dobformat2 = this.pipe.transform(this.endDate, 'MM-dd-yyyy');
+    let startDate = dobformat;
+    let endDate = dobformat2;
+    console.log(startDate, endDate);
+  
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+  
+    /* add a new row to the worksheet and set the startDate and endDate values */
+    // ws[XLSX.utils.encode_cell({c:0, r:0})].v = 'Start Date '
+    // ws[XLSX.utils.encode_cell({c:0, r:1})].v = startDate
+    // ws[XLSX.utils.encode_cell({c:1, r:0})].v = 'End Date '
+    // ws[XLSX.utils.encode_cell({c:1, r:1})].v = endDate
+  
     /* generate workbook and add the worksheet */
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
- 
+  
     /* save to file */  
     XLSX.writeFile(wb, this.fileName);
- 
+  
   }
+  
+  
+  
+
+
+
+  
 
 
   submit(value: any){
@@ -175,6 +218,8 @@ export class ReportComponent implements OnInit {
           // value.startDate = dobformat;
           // value.endDate = dobformat;
           // console.log(this.startDate, this.endDate)
+          console.log(data)
+          // let createdformat = this.pipe.transform(data.createdAt, 'yyyy-MM-dd');
           console.log(data)
           this.dataSource = data
         }

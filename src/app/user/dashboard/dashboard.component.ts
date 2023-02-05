@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   pregnant:any
   tuborcolosis:any
 
+  yearToday = new Date().getFullYear();
+
   fileName= 'graph.xlsx';
 
 
@@ -36,7 +38,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Numbers of Owner Residents Registered',
+        label: 'Numbers of Owner Residents Registered for the year of ' + this.yearToday,
         fill: true,
       }
     ]
@@ -78,7 +80,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Number of Mens',
+        label: 'Number of Mens for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -91,7 +93,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Number of Womans',
+        label: 'Number of Womans for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -104,7 +106,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Number of Qualified for 4ps',
+        label: 'Number of Qualified for 4ps for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -117,7 +119,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Number of Pregnant',
+        label: 'Number of Pregnant for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -130,7 +132,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Tuborcolosis Cases',
+        label: 'Tuborcolosis Cases for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -143,7 +145,7 @@ export class DashboardComponent implements OnInit {
     datasets:[
       {
         data: [],
-        label: 'Malnutrision Cases',
+        label: 'Malnutrision Cases for the year of ' + this.yearToday,
         fill: true,
         // backgroundColor: 'rgba(255, 255, 0, 0.3',
         // borderColor: 'black'
@@ -256,7 +258,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -283,7 +287,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -310,7 +316,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -337,7 +345,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -364,7 +374,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -392,7 +404,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
@@ -419,7 +433,9 @@ export class DashboardComponent implements OnInit {
     let workbook = XLSX.utils.book_new();
 
     // Create a worksheet and add it to the workbook
-    let worksheet = XLSX.utils.aoa_to_sheet([months, element]);
+    let currentYear = new Date().getFullYear();
+    let data = [[currentYear], months, element];
+    let worksheet = XLSX.utils.aoa_to_sheet(data);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Numbers");
 
     // Generate the Excel file
