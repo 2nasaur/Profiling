@@ -8,16 +8,20 @@ const cors = require('cors')
 const sequelize = require('./database/database.connect')
 const primary = require('./models/primary.model');
 const secondary = require('./models/secondary.model');
+const cookieParser = require('cookie-parser');
 
 
 var corsOptions = {
 };
 app.use(cors(corsOptions));
-// parse requests of content-type: application/json
-app.use(bodyParser.json());
 
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse requests of content-type: application/json
+app.use(bodyParser.json());
+
+app.use(cookieParser())
 
 
 app.use(express.urlencoded({extended:true}));
@@ -40,7 +44,7 @@ app.use((req,res)=>{
 secondary.belongsTo(primary,{constrains: true,onDelete:'CASCADE'})
 primary.hasMany(secondary)
 sequelize
-    .sync({force:true})
+    .sync({force:false})
     .then(result=>{
         app.listen(port,()=>{
             //console.log(result)

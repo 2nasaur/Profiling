@@ -2,24 +2,73 @@ const model = require('../models/primary.model')
 const onCreate = {message:"done creating a Profile"}
 const onUpdate = {message:"done Updating a Profile"}
 const Sequelize = require('sequelize');
+const secondary = require('../models/secondary.model');
+const onDel = {message:"Entry has been Deleted"};
+const onErr = {message:"Error, Try Again"};
+const onExist = {message:"Already Exist"}
 
 exports.primaryGetAll = (req,res)=>{
     const page = req.query.page
     const size = req.query.size
-    const sex = req.query.sex
     const pageNo = (page-1)
-    const size1 = parseInt(size)
-    console.log(typeof size1)
-    model.findAll({
-        limit: size1,
-        offset: pageNo
-    })
-    .then(results =>{
-        res.json(results)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
+    const size2 = parseInt(size)
+    const size1 = parseInt(size2)
+    const params1 = req.query.search
+    const Op = Sequelize.Op;
+
+    let params
+    if(params1 == '')
+    params = true
+    else
+    params == false
+
+    if (params == true)
+        model.findAll({
+            limit: size1,
+            offset: pageNo * size1
+        })
+        .then(results =>{
+            res.json(results)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    else
+        model.findAll({
+            limit: size1,
+            offset: pageNo,
+            where:{
+                [Op.or]:[
+                    {
+                        firstName:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    },
+                    {
+                        lastName:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    },
+                    {
+                        address:{
+                            [Op.like]:`%${params1}%`
+                        }
+                    },
+                    {
+                        status:{
+                            [Op.like]:`%${params1}%`
+                        }
+                        }
+                    
+                ]
+            }
+        })
+        .then(results =>{
+            res.json(results)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     
 };
 exports.searchFilter = (req,res)=>{
@@ -69,15 +118,17 @@ exports.searchFilter = (req,res)=>{
     //all are true
     if(sex == true & firstName == true & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                [Op.or]:[{sex:sex},{firstName:firstName},{lastName:lastName}],
+                [Op.or]:[{sex:sex1},{firstName:firstName1},{lastName:lastName1}],
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
+
                 
             } 
         })
         .then(results =>{
-            console.log(here)
+
             res.json(results)
         })
         .catch(err=>{
@@ -87,15 +138,15 @@ exports.searchFilter = (req,res)=>{
     //only sex is true
  else if(sex==true & firstName==false & lastName==false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                sex:sex1
+                sex:sex1,
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
             res.json(results)
-            console.log(typeof sex)
         })
         .catch(err=>{
             console.log(err)
@@ -104,10 +155,11 @@ exports.searchFilter = (req,res)=>{
     //only fname is true
     else if(firstName==true & sex==false & lastName==false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                firstName:firstName1
+                firstName:firstName1,
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -120,10 +172,11 @@ exports.searchFilter = (req,res)=>{
     //only last name is true
     else if(sex == false & firstName == false & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                lastName:lastName1
+                lastName:lastName1,
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -136,10 +189,11 @@ exports.searchFilter = (req,res)=>{
     //sex & fname true
     else if(sex == true & firstName == true & lastName == false){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                [Op.and]:[{sex:sex1},{firstName:firstName1}]
+                [Op.and]:[{sex:sex1},{firstName:firstName1}],
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -152,10 +206,11 @@ exports.searchFilter = (req,res)=>{
     //sex & last name true
     else if(sex == true & firstName == false & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                [Op.and]:[{sex:sex1},{lastName:lastName1}]
+                [Op.and]:[{sex:sex1},{lastName:lastName1}],
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -168,10 +223,11 @@ exports.searchFilter = (req,res)=>{
     //fname and lname true
     else if(sex == false & firstName == true & lastName == true){
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
-                [Op.and]:[{firstName:firstName1},{lastName:lastName1}]
+                [Op.and]:[{firstName:firstName1},{lastName:lastName1}],
+                createdAt:{
+                    [Op.between]:[start,end]
+                }
             } 
         })
         .then(results =>{
@@ -184,11 +240,10 @@ exports.searchFilter = (req,res)=>{
 
     else{
         model.findAll({
-            limit: size1,
-            offset: pageNo,
             where:{
                 createdAt:{
-                    [Op.between]:[start,end]
+                    [Op.between]:[start,end],
+                    
                 }
             }
         })
@@ -205,11 +260,13 @@ exports.searchFilter = (req,res)=>{
 
 exports.primaryGetById = (req,res)=>{
     const id = req.query.id
-    model.findOne({
-        where:{
-            id:id
-        }
-    })
+    model.findByPk(id,{
+        include:[{
+            model: secondary
+        }]
+    }
+
+    )
     .then(results=>{
         res.json(results)
     }).catch(err=>{
@@ -217,23 +274,27 @@ exports.primaryGetById = (req,res)=>{
     })
 }
 
-exports.primaryPost = (req,res)=>{
+exports.primaryPost = async(req,res)=>{
 
     
 
-
+    
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const address = req.body.address;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const typeofhousehold = req.body.typeofhousehold;
     const ea = req.body.ea;
     const mh = req.body.mh;
+    const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
-
+    const pregnant = req.body.pregnant;
+    const remarks = req.body.remarks;
+    const checkDup = await model.findOne({ where: { firstName:firstName,lastName:lastName } });
+    
     let status
     if(soi <= 5000){
         status = "Qualified"
@@ -241,14 +302,11 @@ exports.primaryPost = (req,res)=>{
         status = "Not Qualified"
     }
 
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
+    if(checkDup){
+        res.json(onExist)
     }
-
-    model.create({
+    else{
+        model.create({
         firstName:firstName,
         lastName:lastName,
         address:address,
@@ -259,14 +317,18 @@ exports.primaryPost = (req,res)=>{
         typeofhousehold:typeofhousehold,
         ea:ea,
         mh:mh,
+        tuborcolosis:tuborcolosis,
         malnutrision:malnutrision,
-        status:status
+        pregnant:pregnant,
+        status:status,
+        remarks:remarks
     })
     .then(result =>{
         res.json(onCreate)
     }).catch(err =>{
         console.log(err)
-    })
+    })}
+
 };
 
 exports.updatePrimary = (req,res) => {
@@ -274,26 +336,23 @@ exports.updatePrimary = (req,res) => {
     const lastName = req.body.lastName;
     const address = req.body.address;
     const contact = req.body.contact;
-    const sex1 = req.body.sex;
+    const sex = req.body.sex;
     const civilStatus = req.body.civilStatus;
     const soi = req.body.soi;
     const typeofhousehold = req.body.typeofhousehold;
     const ea = req.body.ea;
     const mh = req.body.mh;
     const id = req.query.id;
+    const pregnant = req.body.pregnant;
+    const tuborcolosis = req.body.tuborcolosis;
     const malnutrision = req.body.malnutrision;
+    const remarks = req.body.remarks;
 
     let status
     if(soi <= 5000){
         status = "Qualified"
     }else{
         status = "Not Qualified"
-    }
-    let sex
-    if(sex1 == true){
-        sex = "Male"
-    }else{
-        sex = "Female"
     }
 
 
@@ -309,7 +368,10 @@ exports.updatePrimary = (req,res) => {
         ea:ea,
         mh:mh,
         malnutrision:malnutrision,
-        status:status
+        tuborcolosis:tuborcolosis,
+        pregnant:pregnant,
+        status:status,
+        remarks:remarks
     },{
         where:{
             id: id
@@ -321,3 +383,16 @@ exports.updatePrimary = (req,res) => {
     })
 }
 
+exports.deletePrimary = (req,res) => {
+    const id = req.query.id
+
+    model.destroy({
+        where:{
+            id:id
+        }
+    }).then(result =>{
+        res.json(onDel)
+    }).catch(err=>{
+        res.json(onErr)
+    })
+}

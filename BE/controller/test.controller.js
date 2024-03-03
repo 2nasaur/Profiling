@@ -2,16 +2,7 @@ const testmodel = require('../models/test.model')
 
 
 exports.testing = (req,res)=>{
-    const page = req.body.page
-    const size = req.body.size
-    const pageNo = (page-1)
-    testmodel.findAll({
-        limit: size,
-        offset: pageNo 
-    })
-    .then(results =>{
-        res.json(results)
-    })
+    res.send('working')
     
 };
 

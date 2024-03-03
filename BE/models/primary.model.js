@@ -21,7 +21,7 @@ const primary = sequelize.define('mainProfile',{
         allowNull: true
     },
     contact:{
-        type: Sequelize.INTEGER ,
+        type: Sequelize.STRING ,
         allowNull: true
     },
     sex:{
@@ -53,6 +53,18 @@ const primary = sequelize.define('mainProfile',{
         allowNull: true
     },
     malnutrision:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    tuborcolosis:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    pregnant:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    remarks:{
         type: Sequelize.STRING,
         allowNull: true
     }

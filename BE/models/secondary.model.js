@@ -17,7 +17,7 @@ const secondary = sequelize.define('subProfile',{
         allowNull: false
     },
     contact:{
-        type: Sequelize.INTEGER ,
+        type: Sequelize.STRING ,
         allowNull: true
     },
     sex:{
@@ -41,6 +41,22 @@ const secondary = sequelize.define('subProfile',{
         allowNull: true
     },
     typeOfRelationship:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    tuborcolosis:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    malnutrision:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    pregnant:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    remarks:{
         type: Sequelize.STRING,
         allowNull: true
     }
